@@ -1,0 +1,10 @@
+{
+  "check": "audit-review",
+  "component_id": "c3fb68f1-4b28-53c6-a988-effc4b8afcfe",
+  "control_id": "au-6",
+  "facts": {
+    "review_completed": true
+  },
+  "observed_at": "2026-10-01T11:00:00Z",
+  "schema": 1
+}

@@ -1,0 +1,11 @@
+{
+  "check": "account-review",
+  "component_id": "c3fb68f1-4b28-53c6-a988-effc4b8afcfe",
+  "control_id": "ac-2",
+  "facts": {
+    "active_accounts": 4,
+    "reviewed_accounts": 4
+  },
+  "observed_at": "2026-10-12T11:00:00Z",
+  "schema": 1
+}

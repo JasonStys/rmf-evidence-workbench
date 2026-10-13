@@ -1,0 +1,30 @@
+[project]
+name = "rmf-evidence-workbench"
+version = "1.0.0"
+description = "Offline educational OSCAL evidence assessment and remediation workbench by Jason Stys"
+requires-python = ">=3.12"
+
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["rmf"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers --strict-config"
+filterwarnings = ["error"]
+
+[tool.coverage.run]
+branch = true
+source = ["rmf"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 90

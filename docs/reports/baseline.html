@@ -1,0 +1,111 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'"><title>RMF evidence — Jason Stys</title><body><h1>RMF Evidence Workbench</h1><p>Created by Jason Stys · github.com/JasonStys · LinkedIn: jason-stys-31b30b351</p><p>Fictional educational evidence only. Authorization: NOT_GRANTED. Selected lab predicates are not complete NIST control assessments or a compliance certification.</p><h2>System and snapshot</h2><p>Meridian Operations — Synthetic Demo · revision 1 · 2026-10-12T12:00:00Z</p><h2>Evidence checks</h2><table><caption>Missing/stale evidence is unknown, not satisfied</caption><thead><tr><th>Control</th><th>Title</th><th>State</th><th>Reason</th><th>Claimed observation</th></tr></thead><tbody><tr><td>ac-2</td><td>Account review</td><td>SATISFIED</td><td>Selected lab predicate satisfied</td><td>2026-10-12T11:00:00Z</td></tr><tr><td>ac-3</td><td>Access denial</td><td>SATISFIED</td><td>Selected lab predicate satisfied</td><td>2026-10-12T11:00:00Z</td></tr><tr><td>au-2</td><td>Audit completeness</td><td>SATISFIED</td><td>Selected lab predicate satisfied</td><td>2026-10-12T11:00:00Z</td></tr><tr><td>au-6</td><td>Audit review</td><td>UNKNOWN</td><td>Evidence timestamp is future-dated or stale</td><td>2026-10-01T11:00:00Z</td></tr><tr><td>cm-6</td><td>Configuration settings</td><td>NOT_SATISFIED</td><td>Selected lab predicate not satisfied</td><td>2026-10-12T11:00:00Z</td></tr><tr><td>cp-9</td><td>Backup recovery</td><td>NOT_SATISFIED</td><td>Selected lab predicate not satisfied</td><td>2026-10-12T11:00:00Z</td></tr></tbody></table><h2>Remediation</h2><table><caption>Fictional risk owners and milestones</caption><thead><tr><th>Control</th><th>Severity</th><th>Status</th><th>Owner</th><th>Due</th><th>Overdue</th><th>Pending milestones</th></tr></thead><tbody><tr><td>cm-6</td><td>moderate</td><td>open</td><td>Fictional Operations Team</td><td>2026-10-12T12:00:00Z</td><td>False</td><td>1</td></tr><tr><td>au-6</td><td>moderate</td><td>open</td><td>Fictional Operations Team</td><td>2026-10-12T12:00:00Z</td><td>False</td><td>1</td></tr><tr><td>cp-9</td><td>high</td><td>open</td><td>Fictional Operations Team</td><td>2026-10-12T12:00:00Z</td><td>False</td><td>1</td></tr></tbody></table><h2>Normalized reviewer data</h2><pre>{
+  &quot;as_of&quot;: &quot;2026-10-12T12:00:00Z&quot;,
+  &quot;assessment_id&quot;: &quot;cec98ee7-c07d-5df3-ba53-f9b3fd95ccfa&quot;,
+  &quot;authorization&quot;: &quot;NOT_GRANTED&quot;,
+  &quot;checks&quot;: [
+    {
+      &quot;actual_sha256&quot;: &quot;b53dd58801f364a3f6ca1c8efabb5e82a6a7332210bf4505497de76aa6cb31f3&quot;,
+      &quot;control_id&quot;: &quot;ac-2&quot;,
+      &quot;evidence_id&quot;: &quot;0a2684d3-44a0-55b8-b993-76fc935e170d&quot;,
+      &quot;expected_sha256&quot;: &quot;b53dd58801f364a3f6ca1c8efabb5e82a6a7332210bf4505497de76aa6cb31f3&quot;,
+      &quot;observed_at&quot;: &quot;2026-10-12T11:00:00Z&quot;,
+      &quot;reason&quot;: &quot;Selected lab predicate satisfied&quot;,
+      &quot;state&quot;: &quot;SATISFIED&quot;,
+      &quot;title&quot;: &quot;Account review&quot;
+    },
+    {
+      &quot;actual_sha256&quot;: &quot;c70680cd3b0109bfffda5b57b5bd099f2eec8efd621ed8b389795ae666e1543a&quot;,
+      &quot;control_id&quot;: &quot;ac-3&quot;,
+      &quot;evidence_id&quot;: &quot;74fa36dc-e4cb-5af4-b75b-d806b4dfdbd6&quot;,
+      &quot;expected_sha256&quot;: &quot;c70680cd3b0109bfffda5b57b5bd099f2eec8efd621ed8b389795ae666e1543a&quot;,
+      &quot;observed_at&quot;: &quot;2026-10-12T11:00:00Z&quot;,
+      &quot;reason&quot;: &quot;Selected lab predicate satisfied&quot;,
+      &quot;state&quot;: &quot;SATISFIED&quot;,
+      &quot;title&quot;: &quot;Access denial&quot;
+    },
+    {
+      &quot;actual_sha256&quot;: &quot;7bad01a4230b1c959bc384573eac20b1179c08c36f66a2aa601507460873803e&quot;,
+      &quot;control_id&quot;: &quot;au-2&quot;,
+      &quot;evidence_id&quot;: &quot;8fa95b3f-1270-58bf-9ea5-9ea3d2c58267&quot;,
+      &quot;expected_sha256&quot;: &quot;7bad01a4230b1c959bc384573eac20b1179c08c36f66a2aa601507460873803e&quot;,
+      &quot;observed_at&quot;: &quot;2026-10-12T11:00:00Z&quot;,
+      &quot;reason&quot;: &quot;Selected lab predicate satisfied&quot;,
+      &quot;state&quot;: &quot;SATISFIED&quot;,
+      &quot;title&quot;: &quot;Audit completeness&quot;
+    },
+    {
+      &quot;actual_sha256&quot;: &quot;f65daf26b02b43f3913cfaa546940fb2e5e0d1e90d012915ed644f5896ac0e3a&quot;,
+      &quot;control_id&quot;: &quot;au-6&quot;,
+      &quot;evidence_id&quot;: &quot;d1186c62-8c5b-5f95-a4aa-d6691f4efa7e&quot;,
+      &quot;expected_sha256&quot;: &quot;f65daf26b02b43f3913cfaa546940fb2e5e0d1e90d012915ed644f5896ac0e3a&quot;,
+      &quot;observed_at&quot;: &quot;2026-10-01T11:00:00Z&quot;,
+      &quot;reason&quot;: &quot;Evidence timestamp is future-dated or stale&quot;,
+      &quot;state&quot;: &quot;UNKNOWN&quot;,
+      &quot;title&quot;: &quot;Audit review&quot;
+    },
+    {
+      &quot;actual_sha256&quot;: &quot;3c1887c71f3d4e446dfa934a2f807ad1a3ef4b01357a38fc622fd1b09b96cfb2&quot;,
+      &quot;control_id&quot;: &quot;cm-6&quot;,
+      &quot;evidence_id&quot;: &quot;f09996b3-dac3-5f9e-92d7-c2946cbb3c67&quot;,
+      &quot;expected_sha256&quot;: &quot;3c1887c71f3d4e446dfa934a2f807ad1a3ef4b01357a38fc622fd1b09b96cfb2&quot;,
+      &quot;observed_at&quot;: &quot;2026-10-12T11:00:00Z&quot;,
+      &quot;reason&quot;: &quot;Selected lab predicate not satisfied&quot;,
+      &quot;state&quot;: &quot;NOT_SATISFIED&quot;,
+      &quot;title&quot;: &quot;Configuration settings&quot;
+    },
+    {
+      &quot;actual_sha256&quot;: &quot;ebeeb566cf4bb3762657e6b18375135acb8fd5195274bab6becf370c32b12b9e&quot;,
+      &quot;control_id&quot;: &quot;cp-9&quot;,
+      &quot;evidence_id&quot;: &quot;ac33c046-fbe1-522e-9b9a-24ec2c6b33c6&quot;,
+      &quot;expected_sha256&quot;: &quot;ebeeb566cf4bb3762657e6b18375135acb8fd5195274bab6becf370c32b12b9e&quot;,
+      &quot;observed_at&quot;: &quot;2026-10-12T11:00:00Z&quot;,
+      &quot;reason&quot;: &quot;Selected lab predicate not satisfied&quot;,
+      &quot;state&quot;: &quot;NOT_SATISFIED&quot;,
+      &quot;title&quot;: &quot;Backup recovery&quot;
+    }
+  ],
+  &quot;manifest_sha256&quot;: &quot;c077e6bdaebf1b64c64ad122994b29e02fd682daf909d0b709a6442982a3b4a4&quot;,
+  &quot;revision&quot;: 1,
+  &quot;risks&quot;: [
+    {
+      &quot;control_id&quot;: &quot;cm-6&quot;,
+      &quot;due_at&quot;: &quot;2026-10-12T12:00:00Z&quot;,
+      &quot;id&quot;: &quot;2028d611-d908-53de-a35e-f2dfbeb03131&quot;,
+      &quot;overdue&quot;: false,
+      &quot;owner&quot;: &quot;Fictional Operations Team&quot;,
+      &quot;pending_milestones&quot;: 1,
+      &quot;severity&quot;: &quot;moderate&quot;,
+      &quot;status&quot;: &quot;open&quot;
+    },
+    {
+      &quot;control_id&quot;: &quot;au-6&quot;,
+      &quot;due_at&quot;: &quot;2026-10-12T12:00:00Z&quot;,
+      &quot;id&quot;: &quot;a1010d28-d98e-5814-bd82-4d1fe4c4d36f&quot;,
+      &quot;overdue&quot;: false,
+      &quot;owner&quot;: &quot;Fictional Operations Team&quot;,
+      &quot;pending_milestones&quot;: 1,
+      &quot;severity&quot;: &quot;moderate&quot;,
+      &quot;status&quot;: &quot;open&quot;
+    },
+    {
+      &quot;control_id&quot;: &quot;cp-9&quot;,
+      &quot;due_at&quot;: &quot;2026-10-12T12:00:00Z&quot;,
+      &quot;id&quot;: &quot;b500f6d9-f668-56a2-9969-62c5a9063cc2&quot;,
+      &quot;overdue&quot;: false,
+      &quot;owner&quot;: &quot;Fictional Operations Team&quot;,
+      &quot;pending_milestones&quot;: 1,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;status&quot;: &quot;open&quot;
+    }
+  ],
+  &quot;schema&quot;: 1,
+  &quot;summary&quot;: {
+    &quot;INTEGRITY_ERROR&quot;: 0,
+    &quot;NOT_SATISFIED&quot;: 2,
+    &quot;SATISFIED&quot;: 3,
+    &quot;UNKNOWN&quot;: 1
+  },
+  &quot;synthetic&quot;: true,
+  &quot;system_id&quot;: &quot;d9cd4d9c-e3ad-511c-b69a-c4ef2d28400a&quot;,
+  &quot;system_name&quot;: &quot;Meridian Operations \u2014 Synthetic Demo&quot;
+}</pre><p>Help: README and docs/runbook.md. Source evidence stays in the input workspace; this report does not embed private raw files.</p></body></html>

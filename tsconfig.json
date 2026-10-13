@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target":"ES2023", "module":"NodeNext", "moduleResolution":"NodeNext", "types":["node"],
+    "strict":true, "noUncheckedIndexedAccess":true, "exactOptionalPropertyTypes":true,
+    "noUnusedLocals":true, "noUnusedParameters":true, "outDir":"dist", "rootDir":"review",
+    "declaration":true, "sourceMap":false
+  },
+  "include":["review/*.ts"]
+}

@@ -1,0 +1,157 @@
+{
+  "controls": [
+    {
+      "id": "ac-2",
+      "max_age_hours": 24,
+      "requirement": "Demonstrate only the fictional account-review predicate described in docs/contracts.md; this is not the full NIST control text.",
+      "title": "Account review"
+    },
+    {
+      "id": "ac-3",
+      "max_age_hours": 24,
+      "requirement": "Demonstrate only the fictional access-denial predicate described in docs/contracts.md; this is not the full NIST control text.",
+      "title": "Access denial"
+    },
+    {
+      "id": "au-2",
+      "max_age_hours": 24,
+      "requirement": "Demonstrate only the fictional audit-completeness predicate described in docs/contracts.md; this is not the full NIST control text.",
+      "title": "Audit completeness"
+    },
+    {
+      "id": "au-6",
+      "max_age_hours": 24,
+      "requirement": "Demonstrate only the fictional audit-review predicate described in docs/contracts.md; this is not the full NIST control text.",
+      "title": "Audit review"
+    },
+    {
+      "id": "cm-6",
+      "max_age_hours": 24,
+      "requirement": "Demonstrate only the fictional configuration-drift predicate described in docs/contracts.md; this is not the full NIST control text.",
+      "title": "Configuration settings"
+    },
+    {
+      "id": "cp-9",
+      "max_age_hours": 24,
+      "requirement": "Demonstrate only the fictional restore-check predicate described in docs/contracts.md; this is not the full NIST control text.",
+      "title": "Backup recovery"
+    }
+  ],
+  "evidence": [
+    {
+      "component_id": "c3fb68f1-4b28-53c6-a988-effc4b8afcfe",
+      "control_id": "ac-2",
+      "id": "0a2684d3-44a0-55b8-b993-76fc935e170d",
+      "observed_at": "2026-10-12T11:00:00Z",
+      "path": "evidence/ac-2.json",
+      "sha256": "b53dd58801f364a3f6ca1c8efabb5e82a6a7332210bf4505497de76aa6cb31f3"
+    },
+    {
+      "component_id": "c3fb68f1-4b28-53c6-a988-effc4b8afcfe",
+      "control_id": "ac-3",
+      "id": "74fa36dc-e4cb-5af4-b75b-d806b4dfdbd6",
+      "observed_at": "2026-10-12T11:00:00Z",
+      "path": "evidence/ac-3.json",
+      "sha256": "c70680cd3b0109bfffda5b57b5bd099f2eec8efd621ed8b389795ae666e1543a"
+    },
+    {
+      "component_id": "c3fb68f1-4b28-53c6-a988-effc4b8afcfe",
+      "control_id": "au-2",
+      "id": "8fa95b3f-1270-58bf-9ea5-9ea3d2c58267",
+      "observed_at": "2026-10-12T11:00:00Z",
+      "path": "evidence/au-2.json",
+      "sha256": "7bad01a4230b1c959bc384573eac20b1179c08c36f66a2aa601507460873803e"
+    },
+    {
+      "component_id": "c3fb68f1-4b28-53c6-a988-effc4b8afcfe",
+      "control_id": "au-6",
+      "id": "d1186c62-8c5b-5f95-a4aa-d6691f4efa7e",
+      "observed_at": "2026-10-01T11:00:00Z",
+      "path": "evidence/au-6.json",
+      "sha256": "f65daf26b02b43f3913cfaa546940fb2e5e0d1e90d012915ed644f5896ac0e3a"
+    },
+    {
+      "component_id": "c3fb68f1-4b28-53c6-a988-effc4b8afcfe",
+      "control_id": "cm-6",
+      "id": "f09996b3-dac3-5f9e-92d7-c2946cbb3c67",
+      "observed_at": "2026-10-12T11:00:00Z",
+      "path": "evidence/cm-6.json",
+      "sha256": "3c1887c71f3d4e446dfa934a2f807ad1a3ef4b01357a38fc622fd1b09b96cfb2"
+    },
+    {
+      "component_id": "c3fb68f1-4b28-53c6-a988-effc4b8afcfe",
+      "control_id": "cp-9",
+      "id": "ac33c046-fbe1-522e-9b9a-24ec2c6b33c6",
+      "observed_at": "2026-10-12T11:00:00Z",
+      "path": "evidence/cp-9.json",
+      "sha256": "ebeeb566cf4bb3762657e6b18375135acb8fd5195274bab6becf370c32b12b9e"
+    }
+  ],
+  "revision": 1,
+  "risks": [
+    {
+      "completed_at": null,
+      "control_id": "au-6",
+      "description": "Refresh and verify the selected au-6 lab evidence before review.",
+      "due_at": "2026-10-12T12:00:00Z",
+      "id": "a1010d28-d98e-5814-bd82-4d1fe4c4d36f",
+      "milestones": [
+        {
+          "completed_at": null,
+          "description": "Produce fresh, verified selected-check evidence",
+          "due_at": "2026-10-12T12:00:00Z",
+          "id": "46b10665-4b63-59b5-8e56-b8a6cdb85c45"
+        }
+      ],
+      "opened_at": "2026-10-01T00:00:00Z",
+      "owner": "Fictional Operations Team",
+      "severity": "moderate",
+      "status": "open"
+    },
+    {
+      "completed_at": null,
+      "control_id": "cm-6",
+      "description": "Refresh and verify the selected cm-6 lab evidence before review.",
+      "due_at": "2026-10-12T12:00:00Z",
+      "id": "2028d611-d908-53de-a35e-f2dfbeb03131",
+      "milestones": [
+        {
+          "completed_at": null,
+          "description": "Produce fresh, verified selected-check evidence",
+          "due_at": "2026-10-12T12:00:00Z",
+          "id": "ab97664e-65be-589e-8a46-ac4c199f933e"
+        }
+      ],
+      "opened_at": "2026-10-01T00:00:00Z",
+      "owner": "Fictional Operations Team",
+      "severity": "moderate",
+      "status": "open"
+    },
+    {
+      "completed_at": null,
+      "control_id": "cp-9",
+      "description": "Refresh and verify the selected cp-9 lab evidence before review.",
+      "due_at": "2026-10-12T12:00:00Z",
+      "id": "b500f6d9-f668-56a2-9969-62c5a9063cc2",
+      "milestones": [
+        {
+          "completed_at": null,
+          "description": "Produce fresh, verified selected-check evidence",
+          "due_at": "2026-10-12T12:00:00Z",
+          "id": "d3badf08-19c5-5035-a99c-640c7c830fbc"
+        }
+      ],
+      "opened_at": "2026-10-01T00:00:00Z",
+      "owner": "Fictional Operations Team",
+      "severity": "high",
+      "status": "open"
+    }
+  ],
+  "schema": 1,
+  "system": {
+    "boundary": "One fictional local software component; no production hosts, accounts, networks or sensitive data.",
+    "component_id": "c3fb68f1-4b28-53c6-a988-effc4b8afcfe",
+    "id": "d9cd4d9c-e3ad-511c-b69a-c4ef2d28400a",
+    "name": "Meridian Operations \u2014 Synthetic Demo"
+  }
+}

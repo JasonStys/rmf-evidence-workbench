@@ -1,0 +1,157 @@
+{
+  "controls": [
+    {
+      "id": "ac-2",
+      "max_age_hours": 24,
+      "requirement": "Demonstrate only the fictional account-review predicate described in docs/contracts.md; this is not the full NIST control text.",
+      "title": "Account review"
+    },
+    {
+      "id": "ac-3",
+      "max_age_hours": 24,
+      "requirement": "Demonstrate only the fictional access-denial predicate described in docs/contracts.md; this is not the full NIST control text.",
+      "title": "Access denial"
+    },
+    {
+      "id": "au-2",
+      "max_age_hours": 24,
+      "requirement": "Demonstrate only the fictional audit-completeness predicate described in docs/contracts.md; this is not the full NIST control text.",
+      "title": "Audit completeness"
+    },
+    {
+      "id": "au-6",
+      "max_age_hours": 24,
+      "requirement": "Demonstrate only the fictional audit-review predicate described in docs/contracts.md; this is not the full NIST control text.",
+      "title": "Audit review"
+    },
+    {
+      "id": "cm-6",
+      "max_age_hours": 24,
+      "requirement": "Demonstrate only the fictional configuration-drift predicate described in docs/contracts.md; this is not the full NIST control text.",
+      "title": "Configuration settings"
+    },
+    {
+      "id": "cp-9",
+      "max_age_hours": 24,
+      "requirement": "Demonstrate only the fictional restore-check predicate described in docs/contracts.md; this is not the full NIST control text.",
+      "title": "Backup recovery"
+    }
+  ],
+  "evidence": [
+    {
+      "component_id": "c3fb68f1-4b28-53c6-a988-effc4b8afcfe",
+      "control_id": "ac-2",
+      "id": "67b10bf2-04e5-5500-ba0b-54867805764c",
+      "observed_at": "2026-10-13T11:00:00Z",
+      "path": "evidence/ac-2.json",
+      "sha256": "ecee9fab9a50262e9354884a65b728e95bb18a84d2e763e1a22f3e3fa86222ac"
+    },
+    {
+      "component_id": "c3fb68f1-4b28-53c6-a988-effc4b8afcfe",
+      "control_id": "ac-3",
+      "id": "96249c60-40e3-501d-8665-a12efe7f689e",
+      "observed_at": "2026-10-13T11:00:00Z",
+      "path": "evidence/ac-3.json",
+      "sha256": "2eb4110673054edab761ea399ed9ab65fc9c5b223db36d66d54f5528b702564d"
+    },
+    {
+      "component_id": "c3fb68f1-4b28-53c6-a988-effc4b8afcfe",
+      "control_id": "au-2",
+      "id": "bd5fafa1-c63f-5d9a-a92e-690604cc9504",
+      "observed_at": "2026-10-13T11:00:00Z",
+      "path": "evidence/au-2.json",
+      "sha256": "1c724c7191f975303793113cec3b9f36411424dd4a9e6893a0542b70c4389d0f"
+    },
+    {
+      "component_id": "c3fb68f1-4b28-53c6-a988-effc4b8afcfe",
+      "control_id": "au-6",
+      "id": "f816236e-25b3-5704-b5d0-cfe8356b2b2d",
+      "observed_at": "2026-10-13T11:00:00Z",
+      "path": "evidence/au-6.json",
+      "sha256": "948747128bde138c87ad78afa093f62c6c4d6765cb3af299b5888c2ef34827fb"
+    },
+    {
+      "component_id": "c3fb68f1-4b28-53c6-a988-effc4b8afcfe",
+      "control_id": "cm-6",
+      "id": "c9c99fed-cafd-5e48-8402-9e0c9e825b0a",
+      "observed_at": "2026-10-13T11:00:00Z",
+      "path": "evidence/cm-6.json",
+      "sha256": "835b14452f5571292282c49fa415f2f5e0fd5ed35732cc8540190868771d1eac"
+    },
+    {
+      "component_id": "c3fb68f1-4b28-53c6-a988-effc4b8afcfe",
+      "control_id": "cp-9",
+      "id": "9883b739-878d-5cdf-9096-78c599a8d727",
+      "observed_at": "2026-10-13T11:00:00Z",
+      "path": "evidence/cp-9.json",
+      "sha256": "252b8e07e0a674369af1189b1447f0b1aa1b2f84754bf3f012b71e538c1bb743"
+    }
+  ],
+  "revision": 2,
+  "risks": [
+    {
+      "completed_at": "2026-10-13T11:30:00Z",
+      "control_id": "au-6",
+      "description": "Refresh and verify the selected au-6 lab evidence before review.",
+      "due_at": "2026-10-12T12:00:00Z",
+      "id": "a1010d28-d98e-5814-bd82-4d1fe4c4d36f",
+      "milestones": [
+        {
+          "completed_at": "2026-10-13T11:30:00Z",
+          "description": "Produce fresh, verified selected-check evidence",
+          "due_at": "2026-10-12T12:00:00Z",
+          "id": "46b10665-4b63-59b5-8e56-b8a6cdb85c45"
+        }
+      ],
+      "opened_at": "2026-10-01T00:00:00Z",
+      "owner": "Fictional Operations Team",
+      "severity": "moderate",
+      "status": "resolved"
+    },
+    {
+      "completed_at": "2026-10-13T11:30:00Z",
+      "control_id": "cm-6",
+      "description": "Refresh and verify the selected cm-6 lab evidence before review.",
+      "due_at": "2026-10-12T12:00:00Z",
+      "id": "2028d611-d908-53de-a35e-f2dfbeb03131",
+      "milestones": [
+        {
+          "completed_at": "2026-10-13T11:30:00Z",
+          "description": "Produce fresh, verified selected-check evidence",
+          "due_at": "2026-10-12T12:00:00Z",
+          "id": "ab97664e-65be-589e-8a46-ac4c199f933e"
+        }
+      ],
+      "opened_at": "2026-10-01T00:00:00Z",
+      "owner": "Fictional Operations Team",
+      "severity": "moderate",
+      "status": "resolved"
+    },
+    {
+      "completed_at": "2026-10-13T11:30:00Z",
+      "control_id": "cp-9",
+      "description": "Refresh and verify the selected cp-9 lab evidence before review.",
+      "due_at": "2026-10-12T12:00:00Z",
+      "id": "b500f6d9-f668-56a2-9969-62c5a9063cc2",
+      "milestones": [
+        {
+          "completed_at": "2026-10-13T11:30:00Z",
+          "description": "Produce fresh, verified selected-check evidence",
+          "due_at": "2026-10-12T12:00:00Z",
+          "id": "d3badf08-19c5-5035-a99c-640c7c830fbc"
+        }
+      ],
+      "opened_at": "2026-10-01T00:00:00Z",
+      "owner": "Fictional Operations Team",
+      "severity": "high",
+      "status": "resolved"
+    }
+  ],
+  "schema": 1,
+  "system": {
+    "boundary": "One fictional local software component; no production hosts, accounts, networks or sensitive data.",
+    "component_id": "c3fb68f1-4b28-53c6-a988-effc4b8afcfe",
+    "id": "d9cd4d9c-e3ad-511c-b69a-c4ef2d28400a",
+    "name": "Meridian Operations \u2014 Synthetic Demo"
+  }
+}

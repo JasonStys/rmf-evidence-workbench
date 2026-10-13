@@ -1,0 +1,128 @@
+# Jason Stys: actual offline OSCAL/evidence validation on four OS/Python lanes plus security gates.
+# BEGIN CODE MAP (generated; python scripts/code_map.py)
+# parameter: name — line 31
+# parameter: on — line 32
+# parameter: push — line 33
+# parameter: branches — line 34
+# parameter: pull_request — line 35
+# parameter: workflow_dispatch — line 36
+# parameter: permissions — line 37
+# parameter: contents — line 38
+# parameter: concurrency — line 39
+# parameter: group — line 40
+# expression: github.ref — line 40
+# parameter: jobs — line 42
+# parameter: quality — line 43
+# expression: matrix.python — line 44
+# expression: matrix.os — line 44
+# parameter: strategy — line 47
+# parameter: matrix — line 49
+# parameter: include — line 50
+# parameter: steps — line 55
+# parameter: uses — line 56
+# parameter: with — line 57
+# parameter: run — line 65
+# parameter: shell — line 68
+# parameter: if — line 71
+# variable: GITHUB_STEP_SUMMARY — line 73
+# parameter: oscal — line 74
+# parameter: security — line 95
+# END CODE MAP
+name: Validate
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    name: Python ${{ matrix.python }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {os: ubuntu-24.04, python: '3.12'}
+          - {os: ubuntu-24.04, python: '3.14'}
+          - {os: windows-latest, python: '3.14'}
+          - {os: macos-15-intel, python: '3.14'}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+      - run: python -m pip install --require-hashes -r requirements-dev.lock
+      - run: npm ci --ignore-scripts
+      - name: Strict checks, actual schema engines, evidence and ledger tests
+        shell: bash
+        run: bash scripts/validate.sh
+      - name: Evidence in logs and summary only
+        if: always()
+        shell: bash
+        run: printf '%s\n' 'Test/coverage/benchmark results in this job log. Synthetic local data only; no authorization, host collection, artifact uploads or Actions caches.' >> "$GITHUB_STEP_SUMMARY"
+  oscal:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.14'
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+      - run: python -m pip install --require-hashes -r requirements-dev.lock
+      - run: npm ci --ignore-scripts && npm run build
+      - name: Verify untouched official release schemas
+        run: python scripts/vendor_oscal.py --check
+      - name: Actual Python/AJV models, SQL chain and TypeScript review
+        run: python scripts/demo.py
+      - name: Cross-language summary
+        run: printf '%s\n' 'Twelve exported OSCAL documents validated in both engines; two real SQLite snapshots verified against the independently retained demo tip; three control and three risk transitions reviewed. No real system authorization or remote schema fetches.' >> "$GITHUB_STEP_SUMMARY"
+  security:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.14'
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+      - run: python -m pip install --require-hashes -r requirements-dev.lock
+      - run: npm ci --ignore-scripts
+      - name: Audit complete runtime and validation dependency graphs
+        run: |
+          python -m pip_audit -r requirements.lock --disable-pip --no-deps
+          python -m pip_audit -r requirements-dev.lock --disable-pip --no-deps
+          npm audit --audit-level=high
+      - name: Hash-verified official native scanners
+        run: |
+          python scripts/scanners.py gitleaks
+          python scripts/scanners.py trivy
+          python scripts/scanners.py actionlint
+      - name: History secrets, HIGH/CRITICAL dependencies and workflow/shell gates
+        run: |
+          .tools/gitleaks git . --redact --no-banner
+          .tools/trivy fs --scanners vuln --severity HIGH,CRITICAL --exit-code 1 --skip-dirs .git,.tools,.venv,.locks,out,node_modules .
+          .tools/actionlint
+          shellcheck scripts/validate.sh
+      - name: Security summary
+        run: printf '%s\n' 'Full dependency advisory audits, history secret scan, HIGH/CRITICAL dependency gate, actionlint and ShellCheck passed. No advisory suppressions, account data, artifact uploads or Actions caches.' >> "$GITHUB_STEP_SUMMARY"

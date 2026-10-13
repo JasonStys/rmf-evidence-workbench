@@ -1,0 +1,84 @@
+{
+  "authorization": "NOT_GRANTED",
+  "comparison": {
+    "author": "Jason Stys",
+    "authorization": "NOT_GRANTED",
+    "changes": [
+      {
+        "after": "SATISFIED",
+        "before": "UNKNOWN",
+        "control_id": "au-6"
+      },
+      {
+        "after": "SATISFIED",
+        "before": "NOT_SATISFIED",
+        "control_id": "cm-6"
+      },
+      {
+        "after": "SATISFIED",
+        "before": "NOT_SATISFIED",
+        "control_id": "cp-9"
+      }
+    ],
+    "risk_changes": [
+      {
+        "after": "resolved;overdue=false",
+        "before": "open;overdue=false",
+        "id": "2028d611-d908-53de-a35e-f2dfbeb03131"
+      },
+      {
+        "after": "resolved;overdue=false",
+        "before": "open;overdue=false",
+        "id": "a1010d28-d98e-5814-bd82-4d1fe4c4d36f"
+      },
+      {
+        "after": "resolved;overdue=false",
+        "before": "open;overdue=false",
+        "id": "b500f6d9-f668-56a2-9969-62c5a9063cc2"
+      }
+    ]
+  },
+  "ledger": {
+    "assurance": "EXTERNAL_TIP_MATCH",
+    "snapshots": 2,
+    "tip": "9214f07c89b254e64fbb55cda986e800a016cda2cb93a7f96c1384e8295e5a9e"
+  },
+  "oscal_documents": 12,
+  "scenarios": [
+    {
+      "native_validation": {
+        "engine": "Ajv 8.20.0",
+        "models": 6,
+        "oscal_version": "1.2.3",
+        "remote_schema_retrieval": false
+      },
+      "scenario": "baseline",
+      "summary": {
+        "INTEGRITY_ERROR": 0,
+        "NOT_SATISFIED": 2,
+        "SATISFIED": 3,
+        "UNKNOWN": 1
+      }
+    },
+    {
+      "native_validation": {
+        "engine": "Ajv 8.20.0",
+        "models": 6,
+        "oscal_version": "1.2.3",
+        "remote_schema_retrieval": false
+      },
+      "scenario": "remediated",
+      "summary": {
+        "INTEGRITY_ERROR": 0,
+        "NOT_SATISFIED": 0,
+        "SATISFIED": 6,
+        "UNKNOWN": 0
+      }
+    }
+  ],
+  "schema_engines": [
+    "Python jsonschema with Unicode patterns",
+    "native ECMAScript Ajv 8.20.0"
+  ],
+  "synthetic": true
+}

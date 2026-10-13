@@ -1,0 +1,18 @@
+{
+  "batches": 5,
+  "controls_per_snapshot": 6,
+  "median_ms_per_snapshot": 43.76,
+  "os": "Windows",
+  "oscal_models_per_snapshot": 6,
+  "peak_python_allocated_bytes": 2349624,
+  "python": "3.14.6",
+  "samples_ms_per_snapshot": [
+    40.449,
+    40.532,
+    43.76,
+    45.311,
+    45.229
+  ],
+  "scope": "warm Python assessment + actual OSCAL schema/reference validation; includes local evidence reads, excludes Node startup, SQLite and production collection; timings informational",
+  "snapshots_per_batch": 10
+}

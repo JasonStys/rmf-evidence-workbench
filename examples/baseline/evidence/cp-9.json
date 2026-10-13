@@ -1,0 +1,12 @@
+{
+  "check": "restore-check",
+  "component_id": "c3fb68f1-4b28-53c6-a988-effc4b8afcfe",
+  "control_id": "cp-9",
+  "facts": {
+    "restore_verified": false,
+    "rpo_seconds": 120,
+    "rto_seconds": 600
+  },
+  "observed_at": "2026-10-12T11:00:00Z",
+  "schema": 1
+}
