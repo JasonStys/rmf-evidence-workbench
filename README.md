@@ -90,6 +90,7 @@ Python handles evidence policy, schema orchestration, reports and persistence. T
 | [docs/reports/baseline.html](docs/reports/baseline.html) | Escaped network-inert rendered synthetic assessment. |
 | [docs/reports/baseline.json](docs/reports/baseline.json) | Canonical measured baseline with unknown/failing states and exact evidence fingerprints. |
 | [docs/reports/benchmark.json](docs/reports/benchmark.json) | Actual warmed assessment/schema timing and allocation measurements. |
+| [docs/reports/ci.json](docs/reports/ci.json) | Verified executable-source SHA and actual completed CI check snapshot. |
 | [docs/reports/demo.json](docs/reports/demo.json) | Actual cross-language synthetic assessment, schema and ledger validation results. |
 | [docs/reports/remediated.json](docs/reports/remediated.json) | Canonical measured remediation with fresh predicates and bounded risk closure. |
 | [docs/reports/validation.md](docs/reports/validation.md) | Measured validation and author review. |

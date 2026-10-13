@@ -1,0 +1,92 @@
+{
+  "author": "Jason Stys",
+  "checked_at": "2026-10-13T23:16:27Z",
+  "repository": "JasonStys/rmf-evidence-workbench",
+  "executable_source_sha": "2c92133653b4ac8775931a5ea6b7e77e35a6d496",
+  "scope": "Immutable executable-source CI snapshot. The documentation-only follow-up is checked separately by the same workflows; current-main status is shown by the README badges and Actions page.",
+  "authorization": "NOT_GRANTED",
+  "synthetic": true,
+  "validate": {
+    "run_id": 38482960574,
+    "url": "https://github.com/JasonStys/rmf-evidence-workbench/actions/runs/38482960574",
+    "conclusion": "success",
+    "completed_at": "2026-10-13T23:15:43Z",
+    "jobs": [
+      {
+        "name": "security",
+        "job_id": 115589706003,
+        "conclusion": "success"
+      },
+      {
+        "name": "oscal",
+        "job_id": 115589706126,
+        "conclusion": "success"
+      },
+      {
+        "name": "Python 3.14 / ubuntu-24.04",
+        "job_id": 115589706151,
+        "conclusion": "success",
+        "python_tests": 108,
+        "typescript_tests": 3,
+        "statement_branch_coverage_percent": 96.70
+      },
+      {
+        "name": "Python 3.12 / ubuntu-24.04",
+        "job_id": 115589706200,
+        "conclusion": "success",
+        "python_tests": 108,
+        "typescript_tests": 3,
+        "statement_branch_coverage_percent": 96.70
+      },
+      {
+        "name": "Python 3.14 / macos-15-intel",
+        "job_id": 115589706295,
+        "conclusion": "success",
+        "python_tests": 108,
+        "typescript_tests": 3,
+        "statement_branch_coverage_percent": 96.70
+      },
+      {
+        "name": "Python 3.14 / windows-latest",
+        "job_id": 115589706302,
+        "conclusion": "success",
+        "python_tests": 108,
+        "typescript_tests": 3,
+        "statement_branch_coverage_percent": 96.70
+      }
+    ]
+  },
+  "codeql": {
+    "run_id": 38482960498,
+    "url": "https://github.com/JasonStys/rmf-evidence-workbench/actions/runs/38482960498",
+    "conclusion": "success",
+    "completed_at": "2026-10-13T23:15:01Z",
+    "open_alert_count": 0,
+    "jobs": [
+      {
+        "name": "CodeQL / javascript-typescript",
+        "job_id": 115589705411,
+        "conclusion": "success"
+      },
+      {
+        "name": "CodeQL / python",
+        "job_id": 115589705842,
+        "conclusion": "success"
+      }
+    ]
+  },
+  "end_to_end": {
+    "oscal_documents": 12,
+    "independent_schema_engines": 2,
+    "sqlite_snapshots": 2,
+    "ledger_assurance": "EXTERNAL_TIP_MATCH",
+    "reviewed_control_transitions": 3,
+    "reviewed_risk_transitions": 3
+  },
+  "storage": {
+    "repository_artifact_bytes": 0,
+    "repository_cache_bytes": 0,
+    "artifact_upload_steps": false,
+    "cache_creation_steps": false
+  }
+}
