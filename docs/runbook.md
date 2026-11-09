@@ -18,7 +18,7 @@ The TypeScript reviewer expects two canonical `assessment.json` files produced b
 
 ## Failure handling and privacy
 
-An invalid command/input returns nonzero and prints a generic contract error; raw exception instances/private content are not printed. A valid assessment may contain unknown/unsatisfied states while execution succeeds—those states are **expected data**, not a failing software test. A failed export preserves existing output. If a ledger append fails after report publication, its transaction rolls back and the report directory remains available for diagnosis; report publication and database append are not one cross-filesystem atomic transaction.
+An invalid command/input returns nonzero and prints a generic contract error; raw exception instances/private content are not printed. A valid assessment may contain unknown/unsatisfied states while execution succeedsâ€”those states are **expected data**, not a failing software test. A failed export preserves existing output. If a ledger append fails after report publication, its transaction rolls back and the report directory remains available for diagnosis; report publication and database append are not one cross-filesystem atomic transaction.
 
 Data is local plaintext. Best-effort 0700 directories do not replace Windows ACLs, disk encryption, a secure device or proper organization controls. Local administrators can read/rewrite files and drop SQLite triggers. Use synthetic samples only until a reviewed private deployment/collection/storage design is in place. Do not publish real SSPs, assessment results, vulnerabilities, identities, account data, credentials or customer evidence.
 
@@ -27,3 +27,9 @@ Data is local plaintext. Best-effort 0700 directories do not replace Windows ACL
 Schema updates require reviewing NIST's release metadata, changing checksums, preserving original notices and rerunning **both** schema engines, mutation tests and semantic checks. The vendoring script is the only explicit schema-download operation; normal assessment/validation never fetches import URIs. Cache keys include immutable verified bytes, so a file changed after a warmup is still hash-checked.
 
 If evidence counts/identity/predicates, privacy, semantic-reference or supply-chain gates fail, stop and investigate before adapting the lab. Revert a reviewed source change via a new commit and rerun validation. Do not weaken assertions, claim certification or automatically close real findings. Preserve needed reports/tips before manually deleting an explicitly inspected demo output. The tool never deletes prior output, runs, caches, accounts or unrelated files.
+
+## Continuous monitoring calendar
+
+Use `python -m rmf calendar <workspace> --as-of <UTC> --horizon-hours 24 --output <new-directory>`. The allowed horizon is1–168hours. Current assessment validation runs first, including risk resolution requirements. The calendar cannot override a failed current assessment. Due-at freshness remains valid at that exact instant and becomes unknown after it; refresh before the boundary. Integrity errors and missing/stale evidence create immediate review items instead of misleading future refresh claims. Overdue unresolved risk and milestone work remains visible. An unassigned evidence owner is explicit and needs human routing. No automatic messages, risk acceptance, authorization, collectors or raw evidence attachments are added.
+
+CSV values beginning with formula operators are prefixed by an apostrophe; HTML is escaped/network-inert. Exact full scope and manifest/assessment IDs remain in JSON/HTML. Output must be new and cannot use linked ancestors. These are local plaintext review files requiring normal private storage controls.

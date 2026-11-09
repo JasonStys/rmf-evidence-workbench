@@ -1,17 +1,19 @@
 """Offline assessment, OSCAL validation and evidence-ledger CLI. Created by Jason Stys."""
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# definition: main — line 31
-# variable: parser — line 33
-# variable: subcommands — line 36
-# variable: assessment — line 37
-# variable: model_validation — line 43
-# variable: new_ledger — line 45
-# variable: verification — line 47
-# variable: history_command — line 50
-# variable: arguments — line 53
-# variable: bundle — line 56
-# variable: result — line 56
-# variable: receipt — line 58
+# definition: main — line 34
+# variable: parser — line 36
+# variable: subcommands — line 39
+# variable: assessment — line 40
+# variable: monitoring_command — line 46
+# variable: model_validation — line 53
+# variable: new_ledger — line 55
+# variable: verification — line 57
+# variable: history_command — line 60
+# variable: arguments — line 63
+# variable: calendar — line 66
+# variable: bundle — line 79
+# variable: result — line 79
+# variable: receipt — line 81
 # END CODE MAP
 
 from __future__ import annotations
@@ -21,6 +23,7 @@ import json
 import sqlite3
 from pathlib import Path
 
+from rmf import monitoring
 from rmf.assessment import assess
 from rmf.contracts import STATES
 from rmf.ledger import append, create, history, verify
@@ -40,6 +43,13 @@ def main() -> int:
     assessment.add_argument("--output", type=Path, required=True)
     assessment.add_argument("--ledger", type=Path)
     assessment.add_argument("--expected-tip")
+    monitoring_command = subcommands.add_parser(
+        "calendar", help="Exact-scope evidence/risk work calendar;no notifications"
+    )
+    monitoring_command.add_argument("workspace", type=Path)
+    monitoring_command.add_argument("--as-of", required=True)
+    monitoring_command.add_argument("--horizon-hours", type=int, default=24)
+    monitoring_command.add_argument("--output", type=Path, required=True)
     model_validation = subcommands.add_parser("validate-oscal")
     model_validation.add_argument("directory", type=Path)
     new_ledger = subcommands.add_parser("init-ledger")
@@ -52,7 +62,20 @@ def main() -> int:
     history_command.add_argument("--state", choices=sorted(STATES))
     arguments = parser.parse_args()
     try:
-        if arguments.command == "assess":
+        if arguments.command == "calendar":
+            calendar = monitoring.calendar(
+                arguments.workspace, arguments.as_of, arguments.horizon_hours
+            )
+            monitoring.publish(calendar, arguments.output)
+            print(
+                json.dumps(
+                    {
+                        "events": len(calendar["events"]),
+                        "authorization": calendar["authorization"],
+                    }
+                )
+            )
+        elif arguments.command == "assess":
             bundle, result = assess(arguments.workspace, arguments.as_of)
             publish(bundle, result, arguments.output)
             receipt = (

@@ -5,7 +5,7 @@
 
 An offline, runnable evidence-and-remediation workbench for a **fictional** information system. It connects selected control predicates, exact artifact hashes, assessment observations, risk milestones, reviewer reports, and a verifiable history to six actual OSCAL JSON models.
 
-Created by **[Jason Stys](https://github.com/JasonStys)** · [Professional contact](https://www.linkedin.com/in/jason-stys-31b30b351/).
+Created by **[Jason Stys](https://github.com/JasonStys)** Â· [Professional contact](https://www.linkedin.com/in/jason-stys-31b30b351/).
 
 This is an educational portfolio lab, **not** a compliance certification, full NIST baseline, government authorization, FedRAMP submission tool, production GRC platform, or risk-acceptance decision. Every report says `authorization: NOT_GRANTED`. It never collects host/account data, changes system security, contacts a production service or fetches a document import URI.
 
@@ -16,6 +16,7 @@ This is an educational portfolio lab, **not** a compliance certification, full N
 - **Semantic consistency:** validate the supported local import chain, unique UUID declarations, selected control scope, components/subjects, reviewer actors, observation/finding determinations, and risk/remediation references. Undetermined observations do not invent core satisfied/not-satisfied findings.
 - **Remediation:** explicit fictional owners, severity, deadlines and milestones. Resolved lab risks require fresh satisfied predicates and completed milestones with coherent chronology. This cannot grant authorization or accept actual risk.
 - **History and review:** parameterized SQLite with append-only triggers, atomic writes, recorded manifest/actual evidence fingerprints, chain verification, chronological state filters and an independently retained tip for truncation detection. TypeScript validates normalized reports and compares control/risk transitions for the same system.
+- **Owner work calendar:** exact-scope evidence freshness boundaries, integrity/gap reviews, unresolved risk deadlines and unfinished milestones, with overdue/upcoming status and explicit unassigned ownership. Bounded 1–168 hour horizon, immutable JSON/inert HTML/formula-neutral CSV; no authorization, notification or risk acceptance.
 - **Readable evidence:** escaped network-inert HTML, canonical normalized JSON, reproducible before/after examples, measured benchmarks and detailed operating/security/test documentation.
 - **Delivery:** strict types/lint, negative/property tests, four OS/Python test lanes, two schema engines, dependency/history-secret checks, actionlint/ShellCheck and both CodeQL languages. No Actions artifact/cache uploads.
 
@@ -34,6 +35,14 @@ npm.cmd run build
 On Linux/macOS, use `.venv/bin/python` and `npm` instead. The demo runs both schema engines, writes two real SQLite snapshots and invokes the compiled TypeScript reviewer. No Docker, paid host, credentials or cloud account is required. Output directories must be **new**; reusing one fails instead of replacing prior evidence.
 
 Open `out/my-first-demo/baseline/assessment.html` in a browser. The baseline deliberately shows three satisfied checks, two unsatisfied checks, and one stale/unknown check. The later synthetic revision shows six satisfied checks and three resolved **lab** risk records; it still does not authorize the system. Example timestamps are fixed fictional dates for reproducibility, not live observations of this PC.
+
+## Review upcoming evidence and remediation work
+
+```powershell
+.venv/Scripts/python -m rmf calendar examples/baseline --as-of 2026-10-12T12:00:00Z --horizon-hours 24 --output out/owner-calendar
+```
+
+Open `calendar.html` or filter `calendar.csv` by owner/control/timing. The fictional baseline yields fourteen distinct items: five freshness boundaries, one stale-evidence gap, two unsatisfied predicate reviews, three risk deadlines and three unfinished milestones. The remediated example retains six upcoming refresh boundaries, even with resolved lab risks. Freshness expiration means evidence must be refreshed; it does not prove a control technically regressed. The original current assessment/resolution gates run first. The report binds exact manifest, assessment, revision and system/component/control scope; it does not read an organization's full control inventory or send messages.
 
 ## Commands
 
@@ -67,7 +76,7 @@ npm.cmd run maps:check
 .venv/Scripts/python scripts/benchmark.py
 ```
 
-[Runbook](docs/runbook.md) · [contracts/predicates](docs/contracts.md) · [architecture/ADR](docs/architecture.md) · [testing strategy](docs/testing.md) · [measured validation](docs/reports/validation.md) · [security](SECURITY.md) · [primary research](docs/research.md).
+[Runbook](docs/runbook.md) Â· [contracts/predicates](docs/contracts.md) Â· [architecture/ADR](docs/architecture.md) Â· [testing strategy](docs/testing.md) Â· [measured validation](docs/reports/validation.md) Â· [security](SECURITY.md) Â· [primary research](docs/research.md).
 
 Python handles evidence policy, schema orchestration, reports and persistence. TypeScript handles typed offline review. SQL provides indexed transactional evidence storage; Bash orchestrates portable validation. Authored code has descriptive contracts and exact generated header maps for definitions, parameters and assigned variables. JSON/lock/vendor files retain their natural format and are individually described below. See [contribution rules](CONTRIBUTING.md).
 
@@ -90,6 +99,7 @@ Python handles evidence policy, schema orchestration, reports and persistence. T
 | [docs/reports/baseline.html](docs/reports/baseline.html) | Escaped network-inert rendered synthetic assessment. |
 | [docs/reports/baseline.json](docs/reports/baseline.json) | Canonical measured baseline with unknown/failing states and exact evidence fingerprints. |
 | [docs/reports/benchmark.json](docs/reports/benchmark.json) | Actual warmed assessment/schema timing and allocation measurements. |
+| [docs/reports/calendar-2026-11-09.md](docs/reports/calendar-2026-11-09.md) | Owner work calendar validation — November 9, 2026. |
 | [docs/reports/ci.json](docs/reports/ci.json) | Verified executable-source SHA and actual completed CI check snapshot. |
 | [docs/reports/demo.json](docs/reports/demo.json) | Actual cross-language synthetic assessment, schema and ledger validation results. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
@@ -128,6 +138,7 @@ Python handles evidence policy, schema orchestration, reports and persistence. T
 | [rmf/assessment.py](rmf/assessment.py) | Assess selected lab checks with evidence integrity, freshness and gated remediation. Created by Jason Stys. |
 | [rmf/contracts.py](rmf/contracts.py) | Closed bounded evidence contracts and safe local reads. Created by Jason Stys. |
 | [rmf/ledger.py](rmf/ledger.py) | Transactional parameterized SQLite snapshots with integrity chains and explicit trust limits. Jason Stys. |
+| [rmf/monitoring.py](rmf/monitoring.py) | Owner work calendar for exact evidence freshness, risk and milestone scope. Created by Jason Stys. |
 | [rmf/oscal.py](rmf/oscal.py) | Build six real OSCAL models and verify pinned schemas plus scoped cross-document references. Jason Stys. |
 | [rmf/report.py](rmf/report.py) | Render escaped inert reviewer evidence and six validated OSCAL exports. Created by Jason Stys. |
 | [schemas/NIST-NOTICE.md](schemas/NIST-NOTICE.md) | Intact original NIST public-domain/CC0 notice for the unmodified schemas. |
@@ -155,6 +166,7 @@ Python handles evidence policy, schema orchestration, reports and persistence. T
 | [tests/test\_cli\_report.py](tests/test_cli_report.py) | CLI, escaped reporting and real cross-language native schema/review workflow tests. Created by Jason Stys. |
 | [tests/test\_contracts.py](tests/test_contracts.py) | Bounded parser/file/identifier and terminal privacy boundary tests. Created by Jason Stys. |
 | [tests/test\_ledger.py](tests/test_ledger.py) | Real SQLite atomicity, query binding, immutable triggers and externally anchored chain tests. Jason Stys. |
+| [tests/test\_monitoring.py](tests/test_monitoring.py) | Independent calendar expectations across freshness, scope, remediation and safe exports. Created by Jason Stys. |
 | [tests/test\_oscal.py](tests/test_oscal.py) | Real schema, Unicode, semantic-reference and no-authorization regression tests. Created by Jason Stys. |
 | [tests/test\_semantics.py](tests/test_semantics.py) | Supported OSCAL scope, reviewer identity and evidence/determination consistency tests. Created by Jason Stys. |
 | [tools.lock.json](tools.lock.json) | Official scanner release URLs and archive SHA-256 digests. |
