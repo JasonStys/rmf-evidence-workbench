@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "project": "rmf-evidence-workbench",
+  "author": "Jason Stys",
+  "editionDate": "2026-11-09",
+  "sourceBaseline": "07b1b4973921b831d6eba4a9c7e375d8977863f4",
+  "sourceUrl": "https://github.com/JasonStys/rmf-evidence-workbench/tree/07b1b4973921b831d6eba4a9c7e375d8977863f4",
+  "functionalEvidenceBaseline": "07b1b4973921b831d6eba4a9c7e375d8977863f4",
+  "evidenceObservedAt": "2026-11-10T05:25:40.628667+00:00",
+  "workflowEvidence": [
+    {
+      "conclusion": "success",
+      "databaseId": 42709733879,
+      "event": "push",
+      "headSha": "07b1b4973921b831d6eba4a9c7e375d8977863f4",
+      "name": "CodeQL",
+      "status": "completed",
+      "url": "https://github.com/JasonStys/rmf-evidence-workbench/actions/runs/42709733879"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 42709733900,
+      "event": "push",
+      "headSha": "07b1b4973921b831d6eba4a9c7e375d8977863f4",
+      "name": "Validate",
+      "status": "completed",
+      "url": "https://github.com/JasonStys/rmf-evidence-workbench/actions/runs/42709733900"
+    }
+  ],
+  "summary": "Build owner monitoring calendars and exact component-scoped freshness, integrity, risk and milestone work queues.",
+  "rationale": "Helps maintain evidence continuously without claiming that a dashboard grants authorization.",
+  "limitations": [
+    "Synthetic selected six-control scope, not certification, authorization to operate or risk acceptance.",
+    "Owner calendars and queues do not collect real evidence or send live notifications.",
+    "Freshness/integrity review supports human monitoring; it does not grant an authorization or waive missing evidence."
+  ],
+  "documents": [
+    {
+      "filename": "project-guide.docx",
+      "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "bytes": 45097,
+      "sha256": "70ec04cc80c70c95324ccf9ef8beaa4d6dd1203f06344a6ba183fac16838503f",
+      "sourceBaseline": "07b1b4973921b831d6eba4a9c7e375d8977863f4",
+      "visualReview": {
+        "approved": true,
+        "method": "Every rendered page individually viewed at readable original resolution",
+        "pageCount": 5,
+        "renderedPageSha256": {
+          "page-1.png": "9077d3994be5f6f5098b80bc5b3f73eb4dccb748994a1cb287261a33f1bef943",
+          "page-2.png": "fc4e8da8e0d3e69bd293b303f050adeb2e5ebf81fa1d4be17f6f7d03a79e7a23",
+          "page-3.png": "7bbbada08728decc5e7ec68b66c76dffffcbbd47cc5f153092fff63630a8e50b",
+          "page-4.png": "4c71d53ee2ef7a3daf30d30a321e0b1ed2963f1fe7cc1cbca234e629ca7a18f5",
+          "page-5.png": "3b1994ebbf9ab599d72ac2623a85ddef16eeb5a0aeaa44206254dc5037a2968e"
+        }
+      }
+    }
+  ],
+  "scope": "Reviewed documentation editions of the cited source. Checksums identify bytes, not authorship. Historical measurements retain their own dates; integration CI must be checked separately."
+}
