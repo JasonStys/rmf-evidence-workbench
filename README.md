@@ -5,7 +5,7 @@
 
 An offline, runnable evidence-and-remediation workbench for a **fictional** information system. It connects selected control predicates, exact artifact hashes, assessment observations, risk milestones, reviewer reports, and a verifiable history to six actual OSCAL JSON models.
 
-Created by **[Jason Stys](https://github.com/JasonStys)** Â· [Professional contact](https://www.linkedin.com/in/jason-stys-31b30b351/).
+Created by **[Jason Stys](https://github.com/JasonStys)** · [Professional contact](https://www.linkedin.com/in/jason-stys-31b30b351/).
 
 This is an educational portfolio lab, **not** a compliance certification, full NIST baseline, government authorization, FedRAMP submission tool, production GRC platform, or risk-acceptance decision. Every report says `authorization: NOT_GRANTED`. It never collects host/account data, changes system security, contacts a production service or fetches a document import URI.
 
@@ -76,7 +76,7 @@ npm.cmd run maps:check
 .venv/Scripts/python scripts/benchmark.py
 ```
 
-[Runbook](docs/runbook.md) Â· [contracts/predicates](docs/contracts.md) Â· [architecture/ADR](docs/architecture.md) Â· [testing strategy](docs/testing.md) Â· [measured validation](docs/reports/validation.md) Â· [security](SECURITY.md) Â· [primary research](docs/research.md).
+[Runbook](docs/runbook.md) · [contracts/predicates](docs/contracts.md) · [architecture/ADR](docs/architecture.md) · [testing strategy](docs/testing.md) · [measured validation](docs/reports/validation.md) · [security](SECURITY.md) · [primary research](docs/research.md).
 
 Python handles evidence policy, schema orchestration, reports and persistence. TypeScript handles typed offline review. SQL provides indexed transactional evidence storage; Bash orchestrates portable validation. Authored code has descriptive contracts and exact generated header maps for definitions, parameters and assigned variables. JSON/lock/vendor files retain their natural format and are individually described below. See [contribution rules](CONTRIBUTING.md).
 
@@ -96,13 +96,17 @@ Python handles evidence policy, schema orchestration, reports and persistence. T
 | [SECURITY.md](SECURITY.md) | Security boundary and reporting. |
 | [docs/architecture.md](docs/architecture.md) | ADR-001: offline, bounded evidence and standards-based exports. |
 | [docs/contracts.md](docs/contracts.md) | Evidence and assessment contracts. |
+| [docs/handbook.md](docs/handbook.md) | RMF Evidence Workbench handbook. |
 | [docs/reports/baseline.html](docs/reports/baseline.html) | Escaped network-inert rendered synthetic assessment. |
 | [docs/reports/baseline.json](docs/reports/baseline.json) | Canonical measured baseline with unknown/failing states and exact evidence fingerprints. |
 | [docs/reports/benchmark.json](docs/reports/benchmark.json) | Actual warmed assessment/schema timing and allocation measurements. |
 | [docs/reports/calendar-2026-11-09.md](docs/reports/calendar-2026-11-09.md) | Owner work calendar validation — November 9, 2026. |
 | [docs/reports/ci.json](docs/reports/ci.json) | Verified executable-source SHA and actual completed CI check snapshot. |
 | [docs/reports/demo.json](docs/reports/demo.json) | Actual cross-language synthetic assessment, schema and ledger validation results. |
+| [docs/reports/documentation-refresh-2026-11-09.md](docs/reports/documentation-refresh-2026-11-09.md) | Documentation refresh — 2026-11-09. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
+| [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed source-bound Word guide with dated validation observations and practical limits. |
+| [docs/reports/publications.json](docs/reports/publications.json) | Exact publication hashes, reviewed page identities and source/evidence baselines. |
 | [docs/reports/remediated.json](docs/reports/remediated.json) | Canonical measured remediation with fresh predicates and bounded risk closure. |
 | [docs/reports/validation.md](docs/reports/validation.md) | Measured validation and author review. |
 | [docs/research.md](docs/research.md) | Primary sources and design rationale. |
@@ -173,3 +177,9 @@ Python handles evidence policy, schema orchestration, reports and persistence. T
 | [tsconfig.json](tsconfig.json) | Strict Node TypeScript compiler settings. |
 
 <!-- END FILE GUIDE -->
+
+## Documentation editions
+
+Start with the [organized handbook](docs/handbook.md) for current usage, design, security and test guidance. Reviewed downloadable editions: [project-guide.docx](docs/reports/project-guide.docx).
+
+[Publication identities and source scope](docs/reports/publications.json) · [Documentation validation record](docs/reports/documentation-refresh-2026-11-09.md). Historical results retain their own tested revision and date.
