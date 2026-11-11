@@ -4,22 +4,22 @@
 # variable: BEGIN — line 33
 # variable: END — line 33
 # variable: SPECIAL — line 34
-# definition: description — line 63
-# parameter: path — line 63
-# variable: content — line 79
-# variable: line — line 87
-# definition: main — line 95
-# variable: parser — line 97
-# variable: args — line 99
-# variable: files — line 100
-# variable: rows — line 108
-# variable: path — line 109
-# variable: label — line 110
-# variable: destination — line 112
-# variable: original — line 113
-# variable: first — line 114
-# variable: last — line 114
-# variable: expected — line 115
+# definition: description — line 65
+# parameter: path — line 65
+# variable: content — line 81
+# variable: line — line 89
+# definition: main — line 97
+# variable: parser — line 99
+# variable: args — line 101
+# variable: files — line 102
+# variable: rows — line 110
+# variable: path — line 111
+# variable: label — line 112
+# variable: destination — line 114
+# variable: original — line 115
+# variable: first — line 116
+# variable: last — line 116
+# variable: expected — line 117
 # END CODE MAP
 
 from __future__ import annotations
@@ -32,6 +32,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BEGIN, END = "<!-- BEGIN FILE GUIDE -->", "<!-- END FILE GUIDE -->"
 SPECIAL = {
+    "docs/reports/windows-application-guide-1.1.1.docx": "Reviewed current 1.1.1 installed-app guide: actual screenshots, workflow, immutable code and measured limits.",
+    "docs/reports/windows-application-guide-1.1.1.json": "Current Word, screenshot, source and individually reviewed rendered-page hashes.",
     "requirements-native.lock": "Exact hash-locked Windows portable build graph; no runtime downloads on user launch.",
     "docs/licenses/tcl-9.0.4.txt": "Actual Tcl9.0.4 runtime notice read from the verified bundled SDK zipfs.",
     "docs/licenses/tk-9.0.4.txt": "Actual Tk9.0.4 runtime notice read from the verified bundled SDK zipfs.",
