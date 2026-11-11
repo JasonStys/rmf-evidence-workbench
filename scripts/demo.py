@@ -1,25 +1,28 @@
 """Execute two real assessments, twelve OSCAL validations, ledger verification and typed review. Jason Stys."""
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# variable: ROOT — line 35
-# definition: run — line 43
-# parameter: output — line 43
-# variable: node — line 45
-# variable: ledger — line 49
-# variable: summaries — line 51
-# variable: tip — line 52
-# variable: as_of — line 53
-# variable: scenario — line 53
-# variable: bundle — line 57
-# variable: result — line 57
-# variable: receipt — line 59
-# variable: tip — line 60
-# variable: native — line 61
-# variable: review — line 75
-# variable: changes — line 87
-# variable: result — line 92
-# definition: main — line 113
-# variable: parser — line 115
-# variable: arguments — line 117
+# variable: ROOT — line 38
+# definition: run — line 46
+# parameter: output — line 46
+# variable: node — line 48
+# variable: ledger — line 52
+# variable: summaries — line 54
+# variable: tip — line 55
+# variable: as_of — line 56
+# variable: scenario — line 56
+# variable: bundle — line 60
+# variable: result — line 60
+# variable: receipt — line 62
+# variable: tip — line 63
+# variable: native — line 64
+# variable: review — line 78
+# variable: changes — line 90
+# variable: native_changes — line 93
+# variable: key — line 99
+# variable: value — line 99
+# variable: result — line 107
+# definition: main — line 128
+# variable: parser — line 130
+# variable: arguments — line 132
 # END CODE MAP
 
 from __future__ import annotations
@@ -85,6 +88,18 @@ def run(output: Path) -> dict[str, Any]:
         timeout=10,
     )
     changes = json.loads(review.stdout)
+    from rmf.desktop_project import comparison, report
+
+    native_changes = comparison(
+        report(str(output / "baseline/assessment.json")),
+        report(str(output / "remediated/assessment.json")),
+    )
+    if changes != {
+        key: value
+        for key, value in native_changes.items()
+        if key not in {"before_assessment_id", "after_assessment_id"}
+    }:
+        raise ValueError("independent TypeScript/Python comparison values differ")
     if len(changes["changes"]) != 3 or len(changes["risk_changes"]) != 3:
         raise ValueError(
             "cross-language change report differs from expected synthetic remediation"

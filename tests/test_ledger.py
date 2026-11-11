@@ -1,35 +1,44 @@
 """Real SQLite atomicity, query binding, immutable triggers and externally anchored chain tests. Jason Stys."""
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# definition: test_real_history_and_exclusive_creation — line 49
-# parameter: tmp_path — line 49
-# parameter: workspace — line 49
-# variable: path — line 51
-# variable: first — line 54
-# variable: tip — line 55
-# variable: fixed — line 56
-# variable: second — line 58
-# variable: receipt — line 59
-# variable: different — line 72
-# variable: key — line 76
-# variable: value — line 76
-# definition: test_triggers_and_corruption_detection — line 83
-# parameter: tmp_path — line 83
-# parameter: workspace — line 83
-# variable: path — line 85
-# variable: connection — line 88
-# variable: sql — line 90
-# definition: test_external_tip_and_unrelated_database — line 109
-# parameter: tmp_path — line 109
-# parameter: workspace — line 109
-# variable: path — line 111
-# variable: receipt — line 113
-# variable: connection — line 116
-# variable: other — line 128
-# variable: connection — line 129
-# definition: test_report_validation — line 149
-# parameter: field — line 149
-# parameter: workspace — line 149
-# variable: report — line 151
+# definition: test_real_history_and_exclusive_creation — line 58
+# parameter: tmp_path — line 58
+# parameter: workspace — line 58
+# variable: path — line 60
+# variable: first — line 63
+# variable: tip — line 64
+# variable: fixed — line 65
+# variable: second — line 67
+# variable: receipt — line 68
+# variable: different — line 81
+# variable: key — line 85
+# variable: value — line 85
+# definition: test_triggers_and_corruption_detection — line 92
+# parameter: tmp_path — line 92
+# parameter: workspace — line 92
+# variable: path — line 94
+# variable: connection — line 97
+# variable: sql — line 99
+# definition: test_external_tip_and_unrelated_database — line 118
+# parameter: tmp_path — line 118
+# parameter: workspace — line 118
+# variable: path — line 120
+# variable: receipt — line 122
+# variable: connection — line 125
+# variable: other — line 137
+# variable: connection — line 138
+# definition: test_spoofed_application_id_cannot_authorize_query_heavy_views — line 146
+# parameter: tmp_path — line 147
+# variable: path — line 150
+# variable: database — line 153
+# variable: original — line 162
+# definition: test_imported_database_value_and_work_limits_are_actual_sqlite_limits — line 168
+# parameter: tmp_path — line 169
+# variable: path — line 172
+# variable: connection — line 174
+# definition: test_report_validation — line 199
+# parameter: field — line 199
+# parameter: workspace — line 199
+# variable: report — line 201
 # END CODE MAP
 
 from __future__ import annotations
@@ -132,6 +141,47 @@ def test_external_tip_and_unrelated_database(workspace: Path, tmp_path: Path) ->
         connect(other)
     with pytest.raises(ValueError):
         connect(tmp_path / "missing.db")
+
+
+def test_spoofed_application_id_cannot_authorize_query_heavy_views(
+    tmp_path: Path,
+) -> None:
+    """A real SQLite file with the expected application marker must not evaluate an imported recursive view."""
+    path = tmp_path / "spoofed.sqlite"
+    from contextlib import closing
+
+    with closing(sqlite3.connect(path)) as database, database:
+        database.executescript("""
+            PRAGMA application_id = 1380795905;
+            CREATE TABLE findings(snapshot_seq,control_id,state);
+            CREATE VIEW snapshots AS
+              WITH RECURSIVE n(x) AS (SELECT 1 UNION ALL SELECT x+1 FROM n)
+              SELECT x AS seq, '' AS payload, '' AS previous_hash, '' AS hash,
+                '' AS assessment_id, '' AS as_of FROM n;
+        """)
+    original = path.read_bytes()
+    with pytest.raises(ValueError, match="ordinary"):
+        verify(path)
+    assert path.read_bytes() == original
+
+
+def test_imported_database_value_and_work_limits_are_actual_sqlite_limits(
+    tmp_path: Path,
+) -> None:
+    """A connection refuses an oversized generated cell and interrupts real excessive query work without execution plugins."""
+    path = tmp_path / "limited.sqlite"
+    create(path)
+    connection = connect(path)
+    try:
+        with pytest.raises(sqlite3.DataError, match="too big"):
+            connection.execute("SELECT zeroblob(3*1024*1024)").fetchone()
+        with pytest.raises(sqlite3.OperationalError, match="interrupted"):
+            connection.execute("""
+                WITH RECURSIVE n(x) AS (SELECT 1 UNION ALL SELECT x+1 FROM n WHERE x<100000000)
+                SELECT sum(x) FROM n
+            """).fetchone()
+    finally:
+        connection.close()
 
 
 @pytest.mark.parametrize(

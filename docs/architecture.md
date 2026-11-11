@@ -30,3 +30,7 @@ The ledger's trusted content includes manifest fingerprint, expected/actual arti
 Files cap at 2 MiB; parse trees cap at depth 32 and 50,000 values. Arrays cap at 1,000 entries; control/evidence/risk scope is further limited by the six known predicates. Evidence reading/hashing is O(B) for bytes read. Indexed dictionary joins avoid repeated scope scans; sorting for stable output/review is O(N log N). Ledger verification is O(H × C) in recorded checks and uses local indexed lookups; H caps at 1,000 snapshots and the database caps at 256 MiB. Warm schema compilation is cached by verified **bytes**, while schema hashes are checked on each validator acquisition.
 
 Revisit authenticated collection, secure private storage, richer control tailoring, complete normative Metaschema constraints, signed/timestamped provenance, append-only remote storage, real assessment authority, concurrency/admission limits and long-lived retention before adapting beyond this synthetic lab. No component pretends to complete Prepare/Categorize/Authorize or choose an official baseline automatically.
+
+## Native workbench 1.1.0
+
+[Native usage, offline data boundary, packaging and real-widget validation](native-workbench.md). The CLI and original validation gates remain; supplied evidence is never live enforcement or a security/authorization approval. Historical report measurements remain dated observations of their recorded sources.

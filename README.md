@@ -1,5 +1,9 @@
 # RMF Evidence Workbench
 
+## Native offline desktop workflow
+
+The Windows portable app now provides actual project input/parameter controls, analysis, literal findings search, exact export and durable SQLite history, using the existing engines. Prepared fictional scenarios are inside this same full application. No live collection/enforcement or background upload runs. See the [native workbench guide](docs/native-workbench.md) for launch, workflow meanings, privacy and validation limits. Created by Jason Stys. Local candidate packaging does not establish a release or installation.
+
 [![Validate](https://github.com/JasonStys/rmf-evidence-workbench/actions/workflows/ci.yml/badge.svg)](https://github.com/JasonStys/rmf-evidence-workbench/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/JasonStys/rmf-evidence-workbench/actions/workflows/codeql.yml/badge.svg)](https://github.com/JasonStys/rmf-evidence-workbench/actions/workflows/codeql.yml)
 
@@ -97,6 +101,9 @@ Python handles evidence policy, schema orchestration, reports and persistence. T
 | [docs/architecture.md](docs/architecture.md) | ADR-001: offline, bounded evidence and standards-based exports. |
 | [docs/contracts.md](docs/contracts.md) | Evidence and assessment contracts. |
 | [docs/handbook.md](docs/handbook.md) | RMF Evidence Workbench handbook. |
+| [docs/licenses/tcl-9.0.4.txt](docs/licenses/tcl-9.0.4.txt) | Actual Tcl9.0.4 runtime notice read from the verified bundled SDK zipfs. |
+| [docs/licenses/tk-9.0.4.txt](docs/licenses/tk-9.0.4.txt) | Actual Tk9.0.4 runtime notice read from the verified bundled SDK zipfs. |
+| [docs/native-workbench.md](docs/native-workbench.md) | Native offline workbench. |
 | [docs/reports/baseline.html](docs/reports/baseline.html) | Escaped network-inert rendered synthetic assessment. |
 | [docs/reports/baseline.json](docs/reports/baseline.json) | Canonical measured baseline with unknown/failing states and exact evidence fingerprints. |
 | [docs/reports/benchmark.json](docs/reports/benchmark.json) | Actual warmed assessment/schema timing and allocation measurements. |
@@ -104,6 +111,7 @@ Python handles evidence policy, schema orchestration, reports and persistence. T
 | [docs/reports/ci.json](docs/reports/ci.json) | Verified executable-source SHA and actual completed CI check snapshot. |
 | [docs/reports/demo.json](docs/reports/demo.json) | Actual cross-language synthetic assessment, schema and ledger validation results. |
 | [docs/reports/documentation-refresh-2026-11-09.md](docs/reports/documentation-refresh-2026-11-09.md) | Documentation refresh — 2026-11-09. |
+| [docs/reports/native-workbench-2026-11-10.md](docs/reports/native-workbench-2026-11-10.md) | Native RMF workbench validation. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
 | [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed source-bound Word guide with dated validation observations and practical limits. |
 | [docs/reports/publications.json](docs/reports/publications.json) | Exact publication hashes, reviewed page identities and source/evidence baselines. |
@@ -119,6 +127,8 @@ Python handles evidence policy, schema orchestration, reports and persistence. T
 | [examples/baseline/evidence/au-6.json](examples/baseline/evidence/au-6.json) | Fictional au-6 evidence/manifest; no real identities, credentials, account data or host collection. |
 | [examples/baseline/evidence/cm-6.json](examples/baseline/evidence/cm-6.json) | Fictional cm-6 evidence/manifest; no real identities, credentials, account data or host collection. |
 | [examples/baseline/evidence/cp-9.json](examples/baseline/evidence/cp-9.json) | Fictional cp-9 evidence/manifest; no real identities, credentials, account data or host collection. |
+| [examples/desktop/baseline-assessment.json](examples/desktop/baseline-assessment.json) | Fictional baseline-assessment evidence/manifest; no real identities, credentials, account data or host collection. |
+| [examples/desktop/remediated-assessment.json](examples/desktop/remediated-assessment.json) | Fictional remediated-assessment evidence/manifest; no real identities, credentials, account data or host collection. |
 | [examples/remediated/bundle.json](examples/remediated/bundle.json) | Fictional bundle evidence/manifest; no real identities, credentials, account data or host collection. |
 | [examples/remediated/evidence/ac-2.json](examples/remediated/evidence/ac-2.json) | Fictional ac-2 evidence/manifest; no real identities, credentials, account data or host collection. |
 | [examples/remediated/evidence/ac-3.json](examples/remediated/evidence/ac-3.json) | Fictional ac-3 evidence/manifest; no real identities, credentials, account data or host collection. |
@@ -133,6 +143,7 @@ Python handles evidence policy, schema orchestration, reports and persistence. T
 | [pyproject.toml](pyproject.toml) | Strict Python lint/type/tests and branch-inclusive coverage configuration. |
 | [requirements-dev.in](requirements-dev.in) | Exact direct validation dependencies plus the runtime graph. |
 | [requirements-dev.lock](requirements-dev.lock) | Complete hash-pinned portable validation graph. |
+| [requirements-native.lock](requirements-native.lock) | Exact hash-locked Windows portable build graph; no runtime downloads on user launch. |
 | [requirements.in](requirements.in) | Exact reviewed runtime dependencies with real JSON format and Unicode support. |
 | [requirements.lock](requirements.lock) | Complete hash-pinned portable runtime graph. |
 | [review/review.test.ts](review/review.test.ts) | Typed review parser, privacy boundaries and snapshot-diff regression tests. Created by Jason Stys. |
@@ -141,6 +152,10 @@ Python handles evidence policy, schema orchestration, reports and persistence. T
 | [rmf/\_\_main\_\_.py](rmf/__main__.py) | Offline assessment, OSCAL validation and evidence-ledger CLI. Created by Jason Stys. |
 | [rmf/assessment.py](rmf/assessment.py) | Assess selected lab checks with evidence integrity, freshness and gated remediation. Created by Jason Stys. |
 | [rmf/contracts.py](rmf/contracts.py) | Closed bounded evidence contracts and safe local reads. Created by Jason Stys. |
+| [rmf/desktop.py](rmf/desktop.py) | Native offline workbench: real project inputs, analysis, searchable evidence, history and export. Jason Stys. |
+| [rmf/desktop\_io.py](rmf/desktop_io.py) | Bounded regular descriptor reads and strict finite JSON for owner-local desktop state. Jason Stys. |
+| [rmf/desktop\_project.py](rmf/desktop_project.py) | Offline evidence/OSCAL, owner calendar and independently anchored ledger workflows using the real RMF engines. Jason Stys. |
+| [rmf/desktop\_state.py](rmf/desktop_state.py) | Owner-local desktop profile, bounded durable bundles and non-overwriting export. Jason Stys. |
 | [rmf/ledger.py](rmf/ledger.py) | Transactional parameterized SQLite snapshots with integrity chains and explicit trust limits. Jason Stys. |
 | [rmf/monitoring.py](rmf/monitoring.py) | Owner work calendar for exact evidence freshness, risk and milestone scope. Created by Jason Stys. |
 | [rmf/oscal.py](rmf/oscal.py) | Build six real OSCAL models and verify pinned schemas plus scoped cross-document references. Jason Stys. |
@@ -154,12 +169,16 @@ Python handles evidence policy, schema orchestration, reports and persistence. T
 | [schemas/oscal\_profile\_schema.json](schemas/oscal_profile_schema.json) | Unmodified NIST OSCAL 1.2.3 profile JSON schema; pinned and checked in both Unicode-capable engines. |
 | [schemas/oscal\_ssp\_schema.json](schemas/oscal_ssp_schema.json) | Unmodified NIST OSCAL 1.2.3 ssp JSON schema; pinned and checked in both Unicode-capable engines. |
 | [scripts/benchmark.py](scripts/benchmark.py) | Measure actual assessment plus warmed OSCAL validation, not production certification. Created by Jason Stys. |
+| [scripts/build\_native.py](scripts/build_native.py) | Build the complete real offline workbench as one Windows portable executable. Jason Stys. |
 | [scripts/code\_map.py](scripts/code_map.py) | Generate/check exact Python, SQL, shell and YAML symbol positions. Created by Jason Stys. |
 | [scripts/demo.py](scripts/demo.py) | Execute two real assessments, twelve OSCAL validations, ledger verification and typed review. Jason Stys. |
 | [scripts/examples.py](scripts/examples.py) | Create/check reproducible fictional baseline and remediated evidence workspaces. Created by Jason Stys. |
 | [scripts/file\_guide.py](scripts/file_guide.py) | Maintain exhaustive tracked-file README summaries without reading ignored drill outputs. Jason Stys. |
+| [scripts/native\_acceptance.py](scripts/native_acceptance.py) | Real frozen widget/core/history/export/unknown-state acceptance on explicit synthetic profiles. Jason Stys. |
+| [scripts/native\_entry.py](scripts/native_entry.py) | Launch the actual bundled offline project workbench; no setup shell commands. Jason Stys. |
 | [scripts/oscal\_check.mjs](scripts/oscal_check.mjs) | Independent native ECMAScript Unicode-schema validation using pinned Ajv. Created by Jason Stys. |
 | [scripts/scanners.py](scripts/scanners.py) | Install only hash-pinned official Linux scanner binaries. Created by Jason Stys. |
+| [scripts/test\_native\_app.py](scripts/test_native_app.py) | Run the real frozen workbench twice with an owned synthetic profile and exact bundle persistence. Jason Stys. |
 | [scripts/ts\_map.mjs](scripts/ts_map.mjs) | Generate/check exact TypeScript and JavaScript AST symbol headers. Created by Jason Stys. |
 | [scripts/validate.sh](scripts/validate.sh) | Cross-platform strict checks, actual schema engines and local evidence verification. Created by Jason Stys. |
 | [scripts/validate\_repo.py](scripts/validate_repo.py) | Validate immutable schema/example pins and storage-free least-privilege CI contracts. Created by Jason Stys. |
@@ -169,9 +188,14 @@ Python handles evidence policy, schema orchestration, reports and persistence. T
 | [tests/test\_assessment.py](tests/test_assessment.py) | Evidence-state, schema, chronology, scope and remediation-gate tests. Created by Jason Stys. |
 | [tests/test\_cli\_report.py](tests/test_cli_report.py) | CLI, escaped reporting and real cross-language native schema/review workflow tests. Created by Jason Stys. |
 | [tests/test\_contracts.py](tests/test_contracts.py) | Bounded parser/file/identifier and terminal privacy boundary tests. Created by Jason Stys. |
+| [tests/test\_desktop\_gui.py](tests/test_desktop_gui.py) | Presentation-adapter unit tests with real core/SQLite workers; real widgets are separately frozen-tested. Jason Stys. |
+| [tests/test\_desktop\_project.py](tests/test_desktop_project.py) | Independent baseline/OSCAL/calendar/transition and independently retained-tip native workflow oracles. Jason Stys. |
+| [tests/test\_desktop\_state.py](tests/test_desktop_state.py) | Independent offline desktop ownership, byte-bound, SQLite and non-overwrite regressions. Jason Stys. |
 | [tests/test\_ledger.py](tests/test_ledger.py) | Real SQLite atomicity, query binding, immutable triggers and externally anchored chain tests. Jason Stys. |
 | [tests/test\_monitoring.py](tests/test_monitoring.py) | Independent calendar expectations across freshness, scope, remediation and safe exports. Created by Jason Stys. |
+| [tests/test\_native\_formats.py](tests/test_native_formats.py) | Actual required URI/Unicode IRI checker and no-silent-downgrade contracts for distributable native validation. Jason Stys. |
 | [tests/test\_oscal.py](tests/test_oscal.py) | Real schema, Unicode, semantic-reference and no-authorization regression tests. Created by Jason Stys. |
+| [tests/test\_reader\_races.py](tests/test_reader_races.py) | Actual opened-device and POSIX regular-to-FIFO replacement regressions for bounded readers. Jason Stys. |
 | [tests/test\_semantics.py](tests/test_semantics.py) | Supported OSCAL scope, reviewer identity and evidence/determination consistency tests. Created by Jason Stys. |
 | [tools.lock.json](tools.lock.json) | Official scanner release URLs and archive SHA-256 digests. |
 | [tsconfig.json](tsconfig.json) | Strict Node TypeScript compiler settings. |
