@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "repository": "rmf-evidence-workbench",
+  "runtimeVersion": "1.1.1",
+  "runtimeSource": "b7e373ee01aea9cc4f29c6417936682cc59b8a0c",
+  "createdAt": "2026-11-11T09:42:00.162Z",
+  "author": "Jason Stys",
+  "document": "windows-application-guide-1.1.1.docx",
+  "sha256": "1ad5a405f584402e3c365a3eb7a852b5e4769f9691427bb09387aa3b101005e5",
+  "screenshots": [
+    {
+      "file": "owner-unknown-review.png",
+      "sha256": "432ad25a9143208cb2138011cb84424ea7998a6118f6b67c060711d9cc04cdcd",
+      "width": 1276,
+      "height": 899,
+      "caption": "A separate workflow in the same installed workbench preserves its original review state and evidence rather than replacing it with a generic success message."
+    },
+    {
+      "file": "selected-evidence.png",
+      "sha256": "e6e58fed546073a94e90dc0e368859b4f3fdb9da160d6097c1a5cd18d6c4bd36",
+      "width": 1276,
+      "height": 899,
+      "caption": "The installed workbench displays its accepted analysis and selected original evidence. These are fictional test inputs, not collected production records."
+    }
+  ],
+  "snippets": [
+    {
+      "file": "rmf/desktop_state.py",
+      "first": 213,
+      "last": 225,
+      "sha256": "0d56b4eb2129ba1b9e3b9bd0344c80e709f594b4d9dc99b6b32b860a3c208294",
+      "url": "https://github.com/JasonStys/rmf-evidence-workbench/blob/b7e373ee01aea9cc4f29c6417936682cc59b8a0c/rmf/desktop_state.py#L213"
+    }
+  ],
+  "observedTests": [
+    {
+      "name": "Actual installed workflows",
+      "observed": "Full original domain, review and export controls passed two normal native launches; all 6 saved bundles retained exact original bytes.",
+      "result": "Passed"
+    },
+    {
+      "name": "Old-to-new profile",
+      "observed": "The actual installed 1.1.0 app created a synthetic profile; installed 1.1.1 reopened it and retained all 6 exact bundles without reset.",
+      "result": "Passed"
+    },
+    {
+      "name": "Source and distribution",
+      "observed": "Exact-main workflows and processed CodeQL passed with zero open main alerts. Five downloaded assets and installed files matched their verified SHA-256 identities.",
+      "result": "Verified"
+    },
+    {
+      "name": "PC and links",
+      "observed": "Existing links were backed up and retargeted with settings retained. Normal profiles and Docker were unchanged; default-profile shortcut activation remains separately untested.",
+      "result": "Verified"
+    }
+  ],
+  "visualReview": {
+    "approved": true,
+    "ooxmlSchema": "passed",
+    "pages": [
+      {
+        "page": 1,
+        "sha256": "7d87499bb8f431f6a52b7bb01f488531811c9adbc4107aba92b9236ac8d99fa3",
+        "approved": true,
+        "method": "Individually inspected final page content"
+      },
+      {
+        "page": 2,
+        "sha256": "35d1893449f993aada45464ff08dd6f249b1406d32af8e8aed12b2952145ad8e",
+        "approved": true,
+        "method": "Individually inspected final page content"
+      },
+      {
+        "page": 3,
+        "sha256": "19c58d51c3d942c81fac2999672e8f59f8bc3549091d79cf7b4563ec593fd9c8",
+        "approved": true,
+        "method": "Individually inspected final page content"
+      },
+      {
+        "page": 4,
+        "sha256": "180fab99c4735b9e872b1430e5c5f0f4c7f8d9cfdd8cf5698a810e05708a22fe",
+        "approved": true,
+        "method": "Individually inspected final page content"
+      }
+    ],
+    "checkedUtc": "2026-11-11T10:22:53.752079+00:00",
+    "method": "All final page content individually inspected by root or named peers; only exact pixel identity carries prior individual inspection."
+  }
+}
