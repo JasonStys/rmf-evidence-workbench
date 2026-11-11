@@ -105,7 +105,7 @@ from .report import publish
 
 ROOT = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parents[1]))
 PRODUCT, PROFILE = "rmf-evidence-workbench", "RmfEvidenceWorkbench"
-TITLE, VERSION = "RMF Evidence Workbench", "1.1.0"
+TITLE, VERSION = "RMF Evidence Workbench", "1.1.1"
 COLUMNS = (
     "Control / snapshot",
     "Evidence / work type",
