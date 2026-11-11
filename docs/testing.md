@@ -20,3 +20,7 @@ Warnings are errors; no skipped/suppressed security assertions are required for 
 Performance is measured after schema warmup using five batches of ten assessments plus actual six-model validation. Correctness is asserted; wall time is informational to avoid hardware-dependent false failures. It excludes Node startup, ledger IO and production collection. Bounds/algorithm analysis complement timings rather than deriving Big-O from benchmark output.
 
 Gaps: every NIST control/enhancement, full OSCAL profile resolution/Metaschema normative constraints, XML/YAML interchange, production evidence authenticity, real government baseline categorization/authorization, multi-user access/storage, WORM/signed timestamps, massive/long-duration workloads and independent penetration/compliance review. This lab documents scope rather than making these claims.
+
+## Native workbench 1.1.0
+
+[Native usage, offline data boundary, packaging and real-widget validation](native-workbench.md). The CLI and original validation gates remain; supplied evidence is never live enforcement or a security/authorization approval. Historical report measurements remain dated observations of their recorded sources.

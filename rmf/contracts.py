@@ -1,63 +1,64 @@
 """Closed bounded evidence contracts and safe local reads. Created by Jason Stys."""
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# variable: MAX_BYTES — line 76
-# variable: MAX_ITEMS — line 77
-# variable: STATES — line 78
-# variable: NAMESPACE — line 79
-# definition: identifier — line 82
-# parameter: value — line 82
-# variable: parsed — line 86
-# definition: uid — line 92
-# parameter: label — line 92
-# definition: timestamp — line 97
-# parameter: value — line 97
-# definition: text — line 106
-# parameter: limit — line 106
-# parameter: value — line 106
-# variable: character — line 114
-# definition: integer — line 121
-# parameter: maximum — line 121
-# parameter: minimum — line 121
-# parameter: value — line 121
-# definition: obj — line 128
-# parameter: fields — line 128
-# parameter: value — line 128
-# definition: array — line 135
-# parameter: minimum — line 135
-# parameter: value — line 135
-# definition: unique_object — line 142
-# parameter: pairs — line 142
-# variable: result — line 144
-# variable: key — line 145
-# variable: value — line 145
-# definition: parse_json — line 152
-# parameter: content — line 152
-# variable: value — line 157
-# variable: pending — line 164
-# variable: nodes — line 165
-# variable: current — line 167
-# variable: depth — line 167
-# variable: nodes — line 168
-# variable: item — line 172
-# variable: item — line 174
-# definition: reject_constant — line 178
-# parameter: value — line 178
-# definition: safe_bytes — line 183
-# parameter: relative — line 183
-# parameter: root — line 183
-# variable: part — line 186
-# variable: base — line 189
-# variable: candidate — line 190
-# variable: part — line 191
-# variable: candidate — line 192
-# variable: info — line 193
-# variable: stream — line 202
-# variable: info — line 203
-# variable: content — line 206
-# definition: canonical — line 212
-# parameter: value — line 212
-# definition: digest — line 219
-# parameter: content — line 219
+# variable: MAX_BYTES — line 77
+# variable: MAX_ITEMS — line 78
+# variable: STATES — line 79
+# variable: NAMESPACE — line 80
+# definition: identifier — line 83
+# parameter: value — line 83
+# variable: parsed — line 87
+# definition: uid — line 93
+# parameter: label — line 93
+# definition: timestamp — line 98
+# parameter: value — line 98
+# definition: text — line 107
+# parameter: limit — line 107
+# parameter: value — line 107
+# variable: character — line 115
+# definition: integer — line 122
+# parameter: maximum — line 122
+# parameter: minimum — line 122
+# parameter: value — line 122
+# definition: obj — line 129
+# parameter: fields — line 129
+# parameter: value — line 129
+# definition: array — line 136
+# parameter: minimum — line 136
+# parameter: value — line 136
+# definition: unique_object — line 143
+# parameter: pairs — line 143
+# variable: result — line 145
+# variable: key — line 146
+# variable: value — line 146
+# definition: parse_json — line 153
+# parameter: content — line 153
+# variable: value — line 158
+# variable: pending — line 165
+# variable: nodes — line 166
+# variable: current — line 168
+# variable: depth — line 168
+# variable: nodes — line 169
+# variable: item — line 173
+# variable: item — line 175
+# definition: reject_constant — line 179
+# parameter: value — line 179
+# definition: safe_bytes — line 184
+# parameter: relative — line 184
+# parameter: root — line 184
+# variable: part — line 187
+# variable: base — line 190
+# variable: candidate — line 191
+# variable: part — line 192
+# variable: candidate — line 193
+# variable: info — line 194
+# variable: descriptor — line 203
+# variable: stream — line 210
+# variable: info — line 211
+# variable: content — line 214
+# definition: canonical — line 220
+# parameter: value — line 220
+# definition: digest — line 227
+# parameter: content — line 227
 # END CODE MAP
 
 from __future__ import annotations
@@ -199,7 +200,14 @@ def safe_bytes(root: Path, relative: str) -> bytes:
         raise ValueError("evidence escaped workspace")
     if not stat.S_ISREG(info.st_mode):
         raise ValueError("ordinary evidence file required")
-    with candidate.open("rb") as stream:
+    descriptor = os.open(
+        candidate,
+        os.O_RDONLY
+        | getattr(os, "O_NONBLOCK", 0)
+        | getattr(os, "O_NOFOLLOW", 0)
+        | getattr(os, "O_BINARY", 0),
+    )
+    with os.fdopen(descriptor, "rb") as stream:
         info = os.fstat(stream.fileno())
         if not stat.S_ISREG(info.st_mode) or info.st_size > MAX_BYTES:
             raise ValueError("bounded ordinary evidence file required")

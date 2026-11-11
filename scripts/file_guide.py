@@ -4,22 +4,22 @@
 # variable: BEGIN — line 33
 # variable: END — line 33
 # variable: SPECIAL — line 34
-# definition: description — line 60
-# parameter: path — line 60
-# variable: content — line 76
-# variable: line — line 84
-# definition: main — line 92
-# variable: parser — line 94
-# variable: args — line 96
-# variable: files — line 97
-# variable: rows — line 105
-# variable: path — line 106
-# variable: label — line 107
-# variable: destination — line 109
-# variable: original — line 110
-# variable: first — line 111
-# variable: last — line 111
-# variable: expected — line 112
+# definition: description — line 63
+# parameter: path — line 63
+# variable: content — line 79
+# variable: line — line 87
+# definition: main — line 95
+# variable: parser — line 97
+# variable: args — line 99
+# variable: files — line 100
+# variable: rows — line 108
+# variable: path — line 109
+# variable: label — line 110
+# variable: destination — line 112
+# variable: original — line 113
+# variable: first — line 114
+# variable: last — line 114
+# variable: expected — line 115
 # END CODE MAP
 
 from __future__ import annotations
@@ -32,6 +32,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BEGIN, END = "<!-- BEGIN FILE GUIDE -->", "<!-- END FILE GUIDE -->"
 SPECIAL = {
+    "requirements-native.lock": "Exact hash-locked Windows portable build graph; no runtime downloads on user launch.",
+    "docs/licenses/tcl-9.0.4.txt": "Actual Tcl9.0.4 runtime notice read from the verified bundled SDK zipfs.",
+    "docs/licenses/tk-9.0.4.txt": "Actual Tk9.0.4 runtime notice read from the verified bundled SDK zipfs.",
     "docs/reports/project-guide.docx": "Reviewed source-bound Word guide with dated validation observations and practical limits.",
     "docs/reports/publications.json": "Exact publication hashes, reviewed page identities and source/evidence baselines.",
     ".gitattributes": "Portable LF text handling.",

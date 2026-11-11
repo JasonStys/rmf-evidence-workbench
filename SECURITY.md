@@ -18,3 +18,8 @@ The caller supplies the trusted manifest/clock and must determine collection aut
 - Hash-locked dependency graphs, exact action/tool pins, nonpersistent checkout credentials, least-scoped CodeQL permissions, dependency/history-secret scans and no suppressions/artifact/cache uploads.
 
 Data is plaintext; local administrators or approved device users may access it. Best-effort Unix modes do not guarantee private inherited Windows ACLs. File checks assume no privileged concurrent source-tree mutation; they are not a hardened upload sandbox or authenticated multi-tenant service. Schema/semantic coverage is explicitly limited to the exported simple lab chain, not every OSCAL normative constraint. Source/report publication and ledger append are separate operations; a failed append preserves the report and rolls back only the database transaction. No destructive cleanup runs automatically.
+
+
+## Native workbench1.1.0
+
+[Native usage, offline data boundary, packaging and real-widget validation](docs/native-workbench.md). The CLI and original validation gates remain; supplied evidence is never live enforcement or a security/authorization approval. Historical report measurements remain dated observations of their recorded sources.

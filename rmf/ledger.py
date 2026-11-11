@@ -1,77 +1,84 @@
 """Transactional parameterized SQLite snapshots with integrity chains and explicit trust limits. Jason Stys."""
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# variable: ROOT — line 98
-# variable: ZERO — line 99
-# definition: validate_report — line 102
-# parameter: value — line 102
-# variable: report — line 104
-# variable: controls — line 133
-# variable: raw — line 134
-# variable: check — line 135
-# variable: control_id — line 148
-# variable: state — line 149
-# variable: field — line 159
-# variable: state — line 166
-# variable: check — line 168
-# variable: risks — line 171
-# variable: raw — line 172
-# variable: risk — line 173
-# variable: identity — line 186
-# variable: key — line 199
-# variable: original — line 199
-# variable: value — line 199
-# definition: create — line 205
-# parameter: path — line 205
-# variable: connection — line 210
-# definition: connect — line 218
-# parameter: path — line 218
-# parameter: writable — line 218
-# variable: mode — line 226
-# variable: connection — line 227
-# definition: verify_connection — line 237
-# parameter: connection — line 238
-# parameter: expected_tip — line 238
-# variable: rows — line 241
-# variable: previous — line 246
-# variable: system — line 247
-# variable: last_as_of — line 248
-# variable: expected_sequence — line 249
-# variable: sequence — line 250
-# variable: payload — line 251
-# variable: parent — line 252
-# variable: stored — line 253
-# variable: assessment_id — line 254
-# variable: recorded_time — line 255
-# variable: report — line 257
-# variable: actual — line 273
-# variable: expected — line 277
-# variable: check — line 278
-# variable: last_as_of — line 282
-# variable: previous — line 282
-# variable: system — line 282
-# definition: verify — line 294
-# parameter: expected_tip — line 294
-# parameter: path — line 294
-# variable: connection — line 296
-# definition: append — line 303
-# parameter: expected_tip — line 304
-# parameter: path — line 304
-# parameter: result — line 304
-# variable: connection — line 308
-# variable: state — line 311
+# variable: ROOT — line 106
+# variable: ZERO — line 107
+# definition: validate_report — line 110
+# parameter: value — line 110
+# variable: report — line 112
+# variable: controls — line 141
+# variable: raw — line 142
+# variable: check — line 143
+# variable: control_id — line 156
+# variable: state — line 157
+# variable: field — line 167
+# variable: state — line 174
+# variable: check — line 176
+# variable: risks — line 179
+# variable: raw — line 180
+# variable: risk — line 181
+# variable: identity — line 194
+# variable: key — line 207
+# variable: original — line 207
+# variable: value — line 207
+# definition: create — line 213
+# parameter: path — line 213
+# variable: connection — line 218
+# definition: connect — line 226
+# parameter: path — line 226
+# parameter: writable — line 226
+# variable: mode — line 234
+# variable: connection — line 235
+# variable: remaining — line 240
+# definition: bounded_work — line 242
+# variable: remaining — line 245
+# variable: tables — line 253
+# variable: _ — line 260
+# variable: kind — line 260
+# variable: sql — line 260
+# definition: verify_connection — line 269
+# parameter: connection — line 270
+# parameter: expected_tip — line 270
+# variable: rows — line 273
+# variable: previous — line 278
+# variable: system — line 279
+# variable: last_as_of — line 280
+# variable: expected_sequence — line 281
+# variable: sequence — line 282
+# variable: payload — line 283
+# variable: parent — line 284
+# variable: stored — line 285
+# variable: assessment_id — line 286
+# variable: recorded_time — line 287
+# variable: report — line 289
+# variable: actual — line 305
+# variable: expected — line 309
+# variable: check — line 310
+# variable: last_as_of — line 314
 # variable: previous — line 314
-# variable: last — line 318
-# variable: payload — line 327
-# variable: sequence — line 328
-# variable: tip — line 329
-# variable: check — line 345
-# definition: history — line 361
-# parameter: path — line 361
-# parameter: state — line 361
-# variable: connection — line 365
-# variable: rows — line 369
-# variable: rows — line 373
-# variable: row — line 377
+# variable: system — line 314
+# definition: verify — line 326
+# parameter: expected_tip — line 326
+# parameter: path — line 326
+# variable: connection — line 328
+# definition: append — line 335
+# parameter: expected_tip — line 336
+# parameter: path — line 336
+# parameter: result — line 336
+# variable: connection — line 340
+# variable: state — line 343
+# variable: previous — line 346
+# variable: last — line 350
+# variable: payload — line 359
+# variable: sequence — line 360
+# variable: tip — line 361
+# variable: check — line 377
+# definition: history — line 393
+# parameter: path — line 393
+# parameter: state — line 393
+# variable: connection — line 397
+# variable: rows — line 401
+# variable: rows — line 405
+# variable: row — line 409
 # END CODE MAP
 
 from __future__ import annotations
@@ -82,6 +89,7 @@ from pathlib import Path
 from typing import Any
 
 from rmf.contracts import (
+    MAX_BYTES,
     STATES,
     array,
     canonical,
@@ -227,10 +235,34 @@ def connect(path: Path, writable: bool = False) -> sqlite3.Connection:
     connection = sqlite3.connect(
         path.resolve().as_uri() + "?mode=" + mode, uri=True, timeout=5
     )
-    connection.execute("PRAGMA foreign_keys = ON")
-    if connection.execute("PRAGMA application_id").fetchone()[0] != 0x524D4601:
+    try:
+        connection.setlimit(sqlite3.SQLITE_LIMIT_LENGTH, MAX_BYTES + 8192)
+        remaining = 20_000
+
+        def bounded_work() -> int:
+            """Interrupt after at most twenty million VM instructions per connection, including imported metadata queries."""
+            nonlocal remaining
+            remaining -= 1
+            return int(remaining <= 0)
+
+        connection.set_progress_handler(bounded_work, 1000)
+        connection.execute("PRAGMA trusted_schema = OFF")
+        connection.execute("PRAGMA foreign_keys = ON")
+        if connection.execute("PRAGMA application_id").fetchone()[0] != 0x524D4601:
+            raise ValueError("database is not an RMF workbench ledger")
+        tables = connection.execute(
+            "SELECT name,type,sql FROM sqlite_schema WHERE name IN ('snapshots','findings')"
+        ).fetchall()
+        if len(tables) != 2 or any(
+            kind != "table"
+            or not isinstance(sql, str)
+            or re.match(r"\s*CREATE\s+VIRTUAL\b", sql, re.I)
+            for _, kind, sql in tables
+        ):
+            raise ValueError("ledger requires ordinary snapshot and finding tables")
+    except BaseException:
         connection.close()
-        raise ValueError("database is not an RMF workbench ledger")
+        raise
     return connection
 
 
