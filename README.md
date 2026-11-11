@@ -84,6 +84,14 @@ npm.cmd run maps:check
 
 Python handles evidence policy, schema orchestration, reports and persistence. TypeScript handles typed offline review. SQL provides indexed transactional evidence storage; Bash orchestrates portable validation. Authored code has descriptive contracts and exact generated header maps for definitions, parameters and assigned variables. JSON/lock/vendor files retain their natural format and are individually described below. See [contribution rules](CONTRIBUTING.md).
 
+## Native profile storage correction
+
+Version 1.1.1 rejects pre-existing linked/nonregular fixed profile and SQLite
+sidecar entries before initialization can write through an alias. Ordinary
+recovery files and existing profile schemas remain supported; no data is reset.
+See the [confirmed fixture, recovery tests and scope](docs/reports/profile-admission-2026-11-11.md).
+Earlier native releases and documentation retain their own dated evidence.
+
 ## Every tracked file
 
 <!-- BEGIN FILE GUIDE -->
@@ -113,6 +121,7 @@ Python handles evidence policy, schema orchestration, reports and persistence. T
 | [docs/reports/documentation-refresh-2026-11-09.md](docs/reports/documentation-refresh-2026-11-09.md) | Documentation refresh — 2026-11-09. |
 | [docs/reports/native-workbench-2026-11-10.md](docs/reports/native-workbench-2026-11-10.md) | Native RMF workbench validation. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
+| [docs/reports/profile-admission-2026-11-11.md](docs/reports/profile-admission-2026-11-11.md) | Fixed profile entry admission — November 11, 2026. |
 | [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed source-bound Word guide with dated validation observations and practical limits. |
 | [docs/reports/publications.json](docs/reports/publications.json) | Exact publication hashes, reviewed page identities and source/evidence baselines. |
 | [docs/reports/remediated.json](docs/reports/remediated.json) | Canonical measured remediation with fresh predicates and bounded risk closure. |
@@ -195,6 +204,7 @@ Python handles evidence policy, schema orchestration, reports and persistence. T
 | [tests/test\_monitoring.py](tests/test_monitoring.py) | Independent calendar expectations across freshness, scope, remediation and safe exports. Created by Jason Stys. |
 | [tests/test\_native\_formats.py](tests/test_native_formats.py) | Actual required URI/Unicode IRI checker and no-silent-downgrade contracts for distributable native validation. Jason Stys. |
 | [tests/test\_oscal.py](tests/test_oscal.py) | Real schema, Unicode, semantic-reference and no-authorization regression tests. Created by Jason Stys. |
+| [tests/test\_profile\_admission.py](tests/test_profile_admission.py) | Actual pre-existing alias refusal and ordinary SQLite recovery continuity. Jason Stys. |
 | [tests/test\_reader\_races.py](tests/test_reader_races.py) | Actual opened-device and POSIX regular-to-FIFO replacement regressions for bounded readers. Jason Stys. |
 | [tests/test\_semantics.py](tests/test_semantics.py) | Supported OSCAL scope, reviewer identity and evidence/determination consistency tests. Created by Jason Stys. |
 | [tools.lock.json](tools.lock.json) | Official scanner release URLs and archive SHA-256 digests. |
